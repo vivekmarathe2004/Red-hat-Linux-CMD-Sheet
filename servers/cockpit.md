@@ -1,5 +1,7 @@
 # Cockpit
 
+> **Server Recipe** | [Home](../README.md) | [Section Index](README.md) | [Labs](../labs/README.md) | [Scenarios](../scenarios/README.md)
+
 ## How This Service Fits
 
 A service is not just a package. A working deployment usually needs a valid config file, a running systemd unit, a listening port, firewall access for remote clients, and SELinux policy that matches the service behavior.
@@ -10,6 +12,10 @@ Deploy in small steps: install, configure, validate, start, open access, test lo
 
 Enable Cockpit web console for browser-based system administration.
 
+## Architecture Notes
+
+Think of this service in layers: package, configuration, systemd unit, listening socket, firewall rule, SELinux policy, logs, and client test. A failure in any layer can look like the service is down.
+
 ## Important Files
 
 | Path | Purpose |
@@ -18,15 +24,19 @@ Enable Cockpit web console for browser-based system administration.
 | `/usr/share/cockpit/` | Cockpit modules |
 | `/var/log/messages` | General logs |
 
-## Common Commands
+## Command Walkthrough
 
-| Task | Command | Notes |
-| --- | --- | --- |
-| Install | `sudo dnf install cockpit` | Web console |
-| Enable socket | `sudo systemctl enable --now cockpit.socket` | Socket activation |
-| Open firewall | `sudo firewall-cmd --add-service=cockpit --permanent` | Port 9090 |
-| Status | `systemctl status cockpit.socket` | Socket state |
-| Logs | `journalctl -u cockpit` | Service logs |
+Read these as actions, not only commands. Each line says what you are trying to prove or change.
+
+- **Install**: `sudo dnf install cockpit` - Web console
+- **Enable socket**: `sudo systemctl enable --now cockpit.socket` - Socket activation
+- **Open firewall**: `sudo firewall-cmd --add-service=cockpit --permanent` - Port 9090
+- **Status**: `systemctl status cockpit.socket` - Socket state
+- **Logs**: `journalctl -u cockpit` - Service logs
+
+## Safe Change Pattern
+
+Back up config files, validate syntax when a validator exists, reload instead of restart when safe, and test from both localhost and a remote client.
 
 ## Configuration Workflow
 
@@ -60,13 +70,16 @@ curl -k https://localhost:9090
 
 ## Troubleshooting
 
-| Problem | Check | Fix |
-| --- | --- | --- |
-| Browser cannot connect | Firewall and socket | Open cockpit service and start socket |
-| Login denied | User and PAM | Confirm account and sudo policy |
-| Certificate warning | Browser | Install trusted certificate if needed |
+Work from the symptom to evidence, then to the smallest safe fix.
+
+- **Browser cannot connect**: check Firewall and socket, then Open cockpit service and start socket.
+- **Login denied**: check User and PAM, then Confirm account and sudo policy.
+- **Certificate warning**: check Browser, then Install trusted certificate if needed.
 
 ## RHEL 9 / RHEL 10 Notes
 
 Cockpit modules available depend on installed packages and repositories.
 
+## Page Navigation
+
+[Servers Index](README.md) | [Web Lab](../labs/web-server.md) | [Service Scenario](../scenarios/service-down.md)

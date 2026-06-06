@@ -1,5 +1,7 @@
 # Processes, Logs, And Monitoring
 
+> **Core Doc** | [Home](../README.md) | [Section Index](README.md) | [Labs](../labs/README.md) | [Scenarios](../scenarios/README.md)
+
 ## What This Means
 
 This topic is part of the daily RHEL administrator workflow. Learn what the feature controls, which files or services own it, and which command proves the current state.
@@ -9,6 +11,10 @@ Use the commands as tools for evidence. A strong admin does not only run a comma
 ## Purpose
 
 Inspect processes, resource usage, logs, sockets, and system health.
+
+## Why It Matters
+
+This topic affects real server behavior. If you can explain the purpose, inspect the current state, make a safe change, and verify it, you are doing administrator work rather than memorizing syntax.
 
 ## Important Files
 
@@ -20,37 +26,44 @@ Inspect processes, resource usage, logs, sockets, and system health.
 | `/run/log/journal/` | Volatile journal storage |
 | `/var/log/journal/` | Persistent journal storage if enabled |
 
-## Common Commands
+## Command Walkthrough
 
-| Task | Command | Notes |
-| --- | --- | --- |
-| Process list | `ps aux` | All processes |
-| Process tree | `pstree -p` | Parent-child view |
-| Live monitor | `top` | Built in |
-| Better monitor | `htop` | Install if available |
-| Kill process | `sudo kill <pid>` | Graceful signal |
-| Force kill | `sudo kill -9 <pid>` | Last resort |
-| Journal boot logs | `journalctl -b` | Current boot |
-| Unit logs | `journalctl -u <service>` | Service logs |
-| Follow logs | `journalctl -f` | Live stream |
-| Failed units | `systemctl --failed` | systemd failures |
-| Sockets | `ss -tulpn` | Listening processes |
-| Memory | `free -h` | RAM and swap |
-| IO | `iostat -xz 1` | Install `sysstat` |
+Read these as actions, not only commands. Each line says what you are trying to prove or change.
+
+- **Process list**: `ps aux` - All processes
+- **Process tree**: `pstree -p` - Parent-child view
+- **Live monitor**: `top` - Built in
+- **Better monitor**: `htop` - Install if available
+- **Kill process**: `sudo kill <pid>` - Graceful signal
+- **Force kill**: `sudo kill -9 <pid>` - Last resort
+- **Journal boot logs**: `journalctl -b` - Current boot
+- **Unit logs**: `journalctl -u <service>` - Service logs
+- **Follow logs**: `journalctl -f` - Live stream
+- **Failed units**: `systemctl --failed` - systemd failures
+- **Sockets**: `ss -tulpn` - Listening processes
+- **Memory**: `free -h` - RAM and swap
+- **IO**: `iostat -xz 1` - Install `sysstat`
 
 ## Configuration Workflow
 
 ```bash
 # Enable persistent journal logs
+
 sudo mkdir -p /var/log/journal
 sudo systemctl restart systemd-journald
 
 # Install common monitoring tools
+
 sudo dnf install sysstat lsof sos
 
 # Enable sysstat collection
+
 sudo systemctl enable --now sysstat
 ```
+
+## Try It In A VM
+
+Run the workflow on a disposable RHEL VM. Change one setting, verify the result, then undo or document what changed. This builds the habit you need for production systems.
 
 ## Verify
 
@@ -63,11 +76,11 @@ ss -tulpn
 
 ## Troubleshooting
 
-| Problem | Check | Fix |
-| --- | --- | --- |
-| Service down | `systemctl status <service>` | Read unit logs and restart after fixing |
-| High CPU | `top` or `ps -eo pid,ppid,cmd,%cpu --sort=-%cpu` | Identify process |
-| Port conflict | `ss -tulpn` | Stop conflicting service or change port |
+Work from the symptom to evidence, then to the smallest safe fix.
+
+- **Service down**: check `systemctl status <service>`, then Read unit logs and restart after fixing.
+- **High CPU**: check `top` or `ps -eo pid,ppid,cmd,%cpu --sort=-%cpu`, then Identify process.
+- **Port conflict**: check `ss -tulpn`, then Stop conflicting service or change port.
 
 ## Common Mistakes
 
@@ -84,3 +97,6 @@ A strong answer explains the concept, names the command, and says how you would 
 
 Journal and classic log files can both be present. Some services log primarily to journald.
 
+## Page Navigation
+
+[Previous](08-storage-lvm-and-mounts.md) | [Docs Index](README.md) | [Next](10-security-and-hardening.md)

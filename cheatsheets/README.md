@@ -1,5 +1,7 @@
 # Cheatsheets
 
+> **Cheatsheet Index** | [Home](../README.md) | [Section Index](../README.md)
+
 Cheatsheets are intentionally compact. Use them after you understand the concept and need a fast lookup.
 
 ## How To Use This Section
@@ -18,3 +20,6 @@ If you are new to a topic, read the matching tutorial page in [docs](../docs/REA
 
 Do not copy a command only because it appears in a cheatsheet. Read the note beside it, replace placeholders, and verify the result.
 
+## Page Navigation
+
+[Home](../README.md)

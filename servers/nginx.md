@@ -1,5 +1,7 @@
 # Nginx
 
+> **Server Recipe** | [Home](../README.md) | [Section Index](README.md) | [Labs](../labs/README.md) | [Scenarios](../scenarios/README.md)
+
 ## How This Service Fits
 
 A service is not just a package. A working deployment usually needs a valid config file, a running systemd unit, a listening port, firewall access for remote clients, and SELinux policy that matches the service behavior.
@@ -10,6 +12,10 @@ Deploy in small steps: install, configure, validate, start, open access, test lo
 
 Install and configure Nginx as a web server or reverse proxy.
 
+## Architecture Notes
+
+Think of this service in layers: package, configuration, systemd unit, listening socket, firewall rule, SELinux policy, logs, and client test. A failure in any layer can look like the service is down.
+
 ## Important Files
 
 | Path | Purpose |
@@ -19,16 +25,20 @@ Install and configure Nginx as a web server or reverse proxy.
 | `/usr/share/nginx/html/` | Default document root |
 | `/var/log/nginx/` | Access and error logs |
 
-## Common Commands
+## Command Walkthrough
 
-| Task | Command | Notes |
-| --- | --- | --- |
-| Install | `sudo dnf install nginx` | Nginx package |
-| Enable | `sudo systemctl enable --now nginx` | Start at boot |
-| Test config | `sudo nginx -t` | Syntax check |
-| Reload | `sudo systemctl reload nginx` | Apply config |
-| Logs | `sudo journalctl -u nginx` | Service logs |
-| Open HTTP | `sudo firewall-cmd --add-service=http --permanent` | Firewall |
+Read these as actions, not only commands. Each line says what you are trying to prove or change.
+
+- **Install**: `sudo dnf install nginx` - Nginx package
+- **Enable**: `sudo systemctl enable --now nginx` - Start at boot
+- **Test config**: `sudo nginx -t` - Syntax check
+- **Reload**: `sudo systemctl reload nginx` - Apply config
+- **Logs**: `sudo journalctl -u nginx` - Service logs
+- **Open HTTP**: `sudo firewall-cmd --add-service=http --permanent` - Firewall
+
+## Safe Change Pattern
+
+Back up config files, validate syntax when a validator exists, reload instead of restart when safe, and test from both localhost and a remote client.
 
 ## Configuration Workflow
 
@@ -76,13 +86,16 @@ sudo ss -tulpn | grep ':80'
 
 ## Troubleshooting
 
-| Problem | Check | Fix |
-| --- | --- | --- |
-| Config fails | `sudo nginx -t` | Fix syntax |
-| 502 bad gateway | `ss -tulpn` | Start backend or fix `proxy_pass` |
-| SELinux blocks proxy | `getsebool httpd_can_network_connect` | `sudo setsebool -P httpd_can_network_connect on` |
+Work from the symptom to evidence, then to the smallest safe fix.
+
+- **Config fails**: check `sudo nginx -t`, then Fix syntax.
+- **502 bad gateway**: check `ss -tulpn`, then Start backend or fix `proxy_pass`.
+- **SELinux blocks proxy**: check `getsebool httpd_can_network_connect`, then `sudo setsebool -P httpd_can_network_connect on`.
 
 ## RHEL 9 / RHEL 10 Notes
 
 Nginx availability and stream versions depend on enabled repositories.
 
+## Page Navigation
+
+[Servers Index](README.md) | [Web Lab](../labs/web-server.md) | [Service Scenario](../scenarios/service-down.md)

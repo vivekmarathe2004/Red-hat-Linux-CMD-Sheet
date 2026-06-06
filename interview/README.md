@@ -1,5 +1,7 @@
 # Interview Preparation
 
+> **Interview Index** | [Home](../README.md) | [Section Index](../README.md)
+
 This section helps you turn command knowledge into spoken technical answers.
 
 ## How To Practice
@@ -22,3 +24,6 @@ After fixing, I verify with ...
 - [Troubleshooting scenarios](../scenarios/README.md)
 - [Hands-on labs](../labs/README.md)
 
+## Page Navigation
+
+[Home](../README.md)

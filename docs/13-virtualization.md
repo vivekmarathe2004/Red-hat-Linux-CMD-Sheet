@@ -1,5 +1,7 @@
 # Virtualization
 
+> **Core Doc** | [Home](../README.md) | [Section Index](README.md) | [Labs](../labs/README.md) | [Scenarios](../scenarios/README.md)
+
 ## What This Means
 
 This topic is part of the daily RHEL administrator workflow. Learn what the feature controls, which files or services own it, and which command proves the current state.
@@ -10,6 +12,10 @@ Use the commands as tools for evidence. A strong admin does not only run a comma
 
 Install and manage KVM/libvirt virtualization hosts and virtual machines.
 
+## Why It Matters
+
+This topic affects real server behavior. If you can explain the purpose, inspect the current state, make a safe change, and verify it, you are doing administrator work rather than memorizing syntax.
+
 ## Important Files
 
 | Path | Purpose |
@@ -19,30 +25,32 @@ Install and manage KVM/libvirt virtualization hosts and virtual machines.
 | `/var/log/libvirt/` | libvirt logs |
 | `/etc/qemu-kvm/` | QEMU/KVM configuration |
 
-## Common Commands
+## Command Walkthrough
 
-| Task | Command | Notes |
-| --- | --- | --- |
-| Install virt stack | `sudo dnf group install "Virtualization Host"` | Package group if available |
-| Install tools | `sudo dnf install virt-install virt-viewer libvirt qemu-kvm` | Core tools |
-| Enable libvirt | `sudo systemctl enable --now libvirtd` | Start host service |
-| List VMs | `sudo virsh list --all` | VM inventory |
-| Start VM | `sudo virsh start <vm>` | Boot VM |
-| Stop VM | `sudo virsh shutdown <vm>` | Graceful shutdown |
-| Force stop | `sudo virsh destroy <vm>` | Last resort |
-| Autostart | `sudo virsh autostart <vm>` | Start at host boot |
-| Console | `sudo virsh console <vm>` | Serial console |
-| Pools | `sudo virsh pool-list --all` | Storage pools |
-| Networks | `sudo virsh net-list --all` | Virtual networks |
+Read these as actions, not only commands. Each line says what you are trying to prove or change.
+
+- **Install virt stack**: `sudo dnf group install "Virtualization Host"` - Package group if available
+- **Install tools**: `sudo dnf install virt-install virt-viewer libvirt qemu-kvm` - Core tools
+- **Enable libvirt**: `sudo systemctl enable --now libvirtd` - Start host service
+- **List VMs**: `sudo virsh list --all` - VM inventory
+- **Start VM**: `sudo virsh start <vm>` - Boot VM
+- **Stop VM**: `sudo virsh shutdown <vm>` - Graceful shutdown
+- **Force stop**: `sudo virsh destroy <vm>` - Last resort
+- **Autostart**: `sudo virsh autostart <vm>` - Start at host boot
+- **Console**: `sudo virsh console <vm>` - Serial console
+- **Pools**: `sudo virsh pool-list --all` - Storage pools
+- **Networks**: `sudo virsh net-list --all` - Virtual networks
 
 ## Configuration Workflow
 
 ```bash
 # Install and start virtualization services
+
 sudo dnf install virt-install virt-viewer libvirt qemu-kvm
 sudo systemctl enable --now libvirtd
 
 # Create a VM
+
 sudo virt-install \
   --name <vm> \
   --memory 4096 \
@@ -52,6 +60,10 @@ sudo virt-install \
   --cdrom <iso-path> \
   --network network=default
 ```
+
+## Try It In A VM
+
+Run the workflow on a disposable RHEL VM. Change one setting, verify the result, then undo or document what changed. This builds the habit you need for production systems.
 
 ## Verify
 
@@ -64,11 +76,11 @@ sudo virsh net-list --all
 
 ## Troubleshooting
 
-| Problem | Check | Fix |
-| --- | --- | --- |
-| KVM unavailable | `lscpu | grep Virtualization` | Enable virtualization in firmware |
-| Default network down | `virsh net-list --all` | Start and autostart default network |
-| VM no console | VM install options | Configure serial console in guest |
+Work from the symptom to evidence, then to the smallest safe fix.
+
+- **KVM unavailable**: check `lscpu, then grep Virtualization`.
+- **Default network down**: check `virsh net-list --all`, then Start and autostart default network.
+- **VM no console**: check VM install options, then Configure serial console in guest.
 
 ## Common Mistakes
 
@@ -85,3 +97,6 @@ A strong answer explains the concept, names the command, and says how you would 
 
 Package group names and OS variant names can differ. Use `osinfo-query os` when available.
 
+## Page Navigation
+
+[Previous](12-containers-podman-buildah-skopeo.md) | [Docs Index](README.md) | [Next](14-automation-shell-and-cron.md)

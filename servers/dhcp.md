@@ -1,5 +1,7 @@
 # DHCP
 
+> **Server Recipe** | [Home](../README.md) | [Section Index](README.md) | [Labs](../labs/README.md) | [Scenarios](../scenarios/README.md)
+
 ## How This Service Fits
 
 A service is not just a package. A working deployment usually needs a valid config file, a running systemd unit, a listening port, firewall access for remote clients, and SELinux policy that matches the service behavior.
@@ -10,6 +12,10 @@ Deploy in small steps: install, configure, validate, start, open access, test lo
 
 Configure a DHCP server for IPv4 address assignment.
 
+## Architecture Notes
+
+Think of this service in layers: package, configuration, systemd unit, listening socket, firewall rule, SELinux policy, logs, and client test. A failure in any layer can look like the service is down.
+
 ## Important Files
 
 | Path | Purpose |
@@ -18,15 +24,19 @@ Configure a DHCP server for IPv4 address assignment.
 | `/var/lib/dhcpd/dhcpd.leases` | Lease database |
 | `/etc/sysconfig/dhcpd` | Interface options when used |
 
-## Common Commands
+## Command Walkthrough
 
-| Task | Command | Notes |
-| --- | --- | --- |
-| Install | `sudo dnf install dhcp-server` | Server package |
-| Enable | `sudo systemctl enable --now dhcpd` | Start at boot |
-| Test config | `sudo dhcpd -t -cf /etc/dhcp/dhcpd.conf` | Syntax |
-| Logs | `sudo journalctl -u dhcpd` | Service logs |
-| Open firewall | `sudo firewall-cmd --add-service=dhcp --permanent` | DHCP service |
+Read these as actions, not only commands. Each line says what you are trying to prove or change.
+
+- **Install**: `sudo dnf install dhcp-server` - Server package
+- **Enable**: `sudo systemctl enable --now dhcpd` - Start at boot
+- **Test config**: `sudo dhcpd -t -cf /etc/dhcp/dhcpd.conf` - Syntax
+- **Logs**: `sudo journalctl -u dhcpd` - Service logs
+- **Open firewall**: `sudo firewall-cmd --add-service=dhcp --permanent` - DHCP service
+
+## Safe Change Pattern
+
+Back up config files, validate syntax when a validator exists, reload instead of restart when safe, and test from both localhost and a remote client.
 
 ## Configuration Workflow
 
@@ -68,13 +78,16 @@ sudo cat /var/lib/dhcpd/dhcpd.leases
 
 ## Troubleshooting
 
-| Problem | Check | Fix |
-| --- | --- | --- |
-| Service fails | `dhcpd -t -cf /etc/dhcp/dhcpd.conf` | Fix syntax |
-| No leases | Network segment | Confirm server is on correct subnet/VLAN |
-| Firewall blocks | `firewall-cmd --list-all` | Add DHCP service |
+Work from the symptom to evidence, then to the smallest safe fix.
+
+- **Service fails**: check `dhcpd -t -cf /etc/dhcp/dhcpd.conf`, then Fix syntax.
+- **No leases**: check Network segment, then Confirm server is on correct subnet/VLAN.
+- **Firewall blocks**: check `firewall-cmd --list-all`, then Add DHCP service.
 
 ## RHEL 9 / RHEL 10 Notes
 
 Package and service names can vary by DHCP implementation. Confirm installed service with `rpm -ql dhcp-server | grep systemd`.
 
+## Page Navigation
+
+[Servers Index](README.md) | [Web Lab](../labs/web-server.md) | [Service Scenario](../scenarios/service-down.md)

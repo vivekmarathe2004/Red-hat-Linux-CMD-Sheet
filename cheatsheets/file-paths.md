@@ -1,8 +1,14 @@
 # File Paths
 
+> **Cheatsheet** | [Home](../README.md) | [Section Index](README.md) | [Docs](../docs/README.md)
+
 ## How To Use This Sheet
 
 Use this as a quick lookup after you understand the related concept. Tables are kept here because speed matters, but production work still requires verification and careful placeholder replacement.
+
+## Read Before Copying
+
+Cheatsheets are fast, but they are not a substitute for understanding. Replace placeholders, check the target host, and verify every change.
 
 ## Purpose
 
@@ -54,3 +60,6 @@ Review carefully before deleting or formatting anything under these paths:
 | `/var/lib` | Application and database state |
 | `/dev` | Device nodes |
 
+## Page Navigation
+
+[Cheatsheets Index](README.md) | [Core Docs](../docs/README.md)

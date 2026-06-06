@@ -1,5 +1,7 @@
 # Lab: Users And Groups
 
+> **Lab** | [Home](../README.md) | [Section Index](README.md) | [Docs](../docs/README.md) | [Scenarios](../scenarios/README.md)
+
 ## Scenario Context
 
 Practice this lab on a disposable RHEL VM. Treat it like a small work ticket: understand the goal, make the change, verify it, and clean up after yourself.
@@ -9,6 +11,10 @@ By the end, you should be able to explain what changed, where the configuration 
 ## Objective
 
 Create local users, groups, sudo access, and account policies.
+
+## Why This Lab Matters
+
+This lab turns a common admin task into muscle memory. The important part is not just reaching the final state, but proving that the system is actually configured correctly.
 
 ## Requirements
 
@@ -63,7 +69,14 @@ sudo groupdel <admins>
 - Leaving test users, packages, services, or mounts behind after cleanup.
 - Practicing only the success path and never checking logs when something fails.
 
+## Review Questions
+
+After the lab, answer these out loud: what changed, which command changed it, where is it stored, how did you verify it, and what would fail if it were misconfigured?
+
 ## Interview Takeaway
 
 Explain the difference between primary group, supplementary groups, password lock, and sudo authorization.
 
+## Page Navigation
+
+Previous | [Labs Index](README.md) | [Next](permissions-and-acls.md)

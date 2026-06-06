@@ -1,8 +1,14 @@
 # Command Index
 
+> **Cheatsheet** | [Home](../README.md) | [Section Index](README.md) | [Docs](../docs/README.md)
+
 ## How To Use This Sheet
 
 Use this as a quick lookup after you understand the related concept. Tables are kept here because speed matters, but production work still requires verification and careful placeholder replacement.
+
+## Read Before Copying
+
+Cheatsheets are fast, but they are not a substitute for understanding. Replace placeholders, check the target host, and verify every change.
 
 ## Purpose
 
@@ -126,3 +132,6 @@ Fast lookup for common RHEL administration commands.
 | Build | `podman build -t <tag> .` |
 | Inspect remote | `skopeo inspect docker://<image>` |
 
+## Page Navigation
+
+[Cheatsheets Index](README.md) | [Core Docs](../docs/README.md)

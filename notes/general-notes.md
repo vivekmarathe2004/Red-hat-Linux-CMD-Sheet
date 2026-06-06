@@ -1,5 +1,7 @@
 # General Notes
 
+> **Notes** | [Home](../README.md) | [Section Index](README.md) | [Syllabus](../syllabus/README.md) | [Interview](../interview/README.md)
+
 ## How To Read This Guide
 
 Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
@@ -514,3 +516,7 @@ Read this as a practical field guide, not a dictionary. Each section should help
 ```text
 After fixing the issue, I verify the service from localhost and from a remote client, check logs again, and document what changed.
 ```
+
+## Page Navigation
+
+[Notes Index](README.md) | [Syllabus](../syllabus/README.md)

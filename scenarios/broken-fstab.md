@@ -1,10 +1,16 @@
 # Scenario: Broken fstab
 
+> **Scenario** | [Home](../README.md) | [Section Index](README.md) | [Troubleshooting Doc](../docs/15-troubleshooting.md) | [Labs](../labs/README.md)
+
 ## What This Usually Means
 
 This symptom tells you one layer of the system is not matching the expected state. Do not guess from the error message alone.
 
 Collect evidence from service state, logs, ports, firewall, SELinux, DNS, storage, and package state until the failing layer is clear.
+
+## Incident Story
+
+A user or monitoring system reports a symptom. Your task is to confirm what is broken, identify the failing layer, fix the smallest safe thing, and prove recovery.
 
 ## Symptoms
 
@@ -59,7 +65,14 @@ systemctl --failed
 
 A good troubleshooting answer is not just a fix. It explains the evidence that led to the fix and the command used to verify recovery.
 
+## Prevention
+
+After recovery, document the root cause and add a check, note, or monitoring rule that would make the same issue easier to catch next time.
+
 ## Interview Answer
 
 "For fstab boot issues, I compare `/etc/fstab` with `blkid` and `lsblk`, then test with `mount -a` before rebooting."
 
+## Page Navigation
+
+[Previous](disk-full.md) | [Scenarios Index](README.md) | [Next](dns-failure.md)

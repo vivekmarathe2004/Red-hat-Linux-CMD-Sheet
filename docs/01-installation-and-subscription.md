@@ -1,5 +1,7 @@
 # Installation And Subscription
 
+> **Core Doc** | [Home](../README.md) | [Section Index](README.md) | [Labs](../labs/README.md) | [Scenarios](../scenarios/README.md)
+
 ## What This Means
 
 This topic is part of the daily RHEL administrator workflow. Learn what the feature controls, which files or services own it, and which command proves the current state.
@@ -10,6 +12,10 @@ Use the commands as tools for evidence. A strong admin does not only run a comma
 
 Register RHEL systems, attach subscriptions, enable repositories, and prepare systems after installation.
 
+## Why It Matters
+
+This topic affects real server behavior. If you can explain the purpose, inspect the current state, make a safe change, and verify it, you are doing administrator work rather than memorizing syntax.
+
 ## Important Files
 
 | Path | Purpose |
@@ -19,38 +25,47 @@ Register RHEL systems, attach subscriptions, enable repositories, and prepare sy
 | `/root/anaconda-ks.cfg` | Kickstart generated from install |
 | `/var/log/anaconda/` | Installer logs |
 
-## Common Commands
+## Command Walkthrough
 
-| Task | Command | Notes |
-| --- | --- | --- |
-| Register | `sudo subscription-manager register` | Prompts for credentials |
-| Register with org key | `sudo subscription-manager register --org=<org> --activationkey=<key>` | Common for automation |
-| Show status | `sudo subscription-manager status` | Checks entitlement |
-| List repos | `sudo subscription-manager repos --list-enabled` | Enabled only |
-| Enable repo | `sudo subscription-manager repos --enable=<repo-id>` | Use exact repo ID |
-| Release lock | `sudo subscription-manager release --set=<major.minor>` | Optional version pin |
-| Remove release lock | `sudo subscription-manager release --unset` | Return to latest |
-| Unregister | `sudo subscription-manager unregister` | Removes registration |
+Read these as actions, not only commands. Each line says what you are trying to prove or change.
+
+- **Register**: `sudo subscription-manager register` - Prompts for credentials
+- **Register with org key**: `sudo subscription-manager register --org=<org> --activationkey=<key>` - Common for automation
+- **Show status**: `sudo subscription-manager status` - Checks entitlement
+- **List repos**: `sudo subscription-manager repos --list-enabled` - Enabled only
+- **Enable repo**: `sudo subscription-manager repos --enable=<repo-id>` - Use exact repo ID
+- **Release lock**: `sudo subscription-manager release --set=<major.minor>` - Optional version pin
+- **Remove release lock**: `sudo subscription-manager release --unset` - Return to latest
+- **Unregister**: `sudo subscription-manager unregister` - Removes registration
 
 ## Configuration Workflow
 
 ```bash
 # Register with an activation key
+
 sudo subscription-manager register --org=<org> --activationkey=<key>
 
 # Check status
+
 sudo subscription-manager status
 
 # Enable common repositories
+
 sudo subscription-manager repos --enable=rhel-9-for-x86_64-baseos-rpms
 sudo subscription-manager repos --enable=rhel-9-for-x86_64-appstream-rpms
 
 # For RHEL 10, use the matching RHEL 10 repo IDs shown by this command
+
 sudo subscription-manager repos --list
 
 # Update system
+
 sudo dnf update
 ```
+
+## Try It In A VM
+
+Run the workflow on a disposable RHEL VM. Change one setting, verify the result, then undo or document what changed. This builds the habit you need for production systems.
 
 ## Verify
 
@@ -62,11 +77,11 @@ sudo dnf repolist
 
 ## Troubleshooting
 
-| Problem | Check | Fix |
-| --- | --- | --- |
-| No enabled repos | `dnf repolist` | Enable BaseOS and AppStream |
-| Wrong version repos | `subscription-manager release --show` | Unset or set correct release |
-| Cert errors | `subscription-manager refresh` | Refresh entitlement data |
+Work from the symptom to evidence, then to the smallest safe fix.
+
+- **No enabled repos**: check `dnf repolist`, then Enable BaseOS and AppStream.
+- **Wrong version repos**: check `subscription-manager release --show`, then Unset or set correct release.
+- **Cert errors**: check `subscription-manager refresh`, then Refresh entitlement data.
 
 ## Common Mistakes
 
@@ -83,3 +98,6 @@ A strong answer explains the concept, names the command, and says how you would 
 
 Repository IDs are version-specific. Do not copy RHEL 9 repo IDs onto RHEL 10; list available repos and enable the matching RHEL 10 BaseOS and AppStream repositories.
 
+## Page Navigation
+
+[Previous](00-getting-started.md) | [Docs Index](README.md) | [Next](02-package-management-and-repos.md)

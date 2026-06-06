@@ -1,5 +1,7 @@
 # FTP With vsftpd
 
+> **Server Recipe** | [Home](../README.md) | [Section Index](README.md) | [Labs](../labs/README.md) | [Scenarios](../scenarios/README.md)
+
 ## How This Service Fits
 
 A service is not just a package. A working deployment usually needs a valid config file, a running systemd unit, a listening port, firewall access for remote clients, and SELinux policy that matches the service behavior.
@@ -10,6 +12,10 @@ Deploy in small steps: install, configure, validate, start, open access, test lo
 
 Install a basic FTP service with vsftpd where FTP is explicitly required.
 
+## Architecture Notes
+
+Think of this service in layers: package, configuration, systemd unit, listening socket, firewall rule, SELinux policy, logs, and client test. A failure in any layer can look like the service is down.
+
 ## Important Files
 
 | Path | Purpose |
@@ -19,15 +25,19 @@ Install a basic FTP service with vsftpd where FTP is explicitly required.
 | `/var/ftp/` | Common anonymous FTP root |
 | `/var/log/xferlog` | Transfer log when enabled |
 
-## Common Commands
+## Command Walkthrough
 
-| Task | Command | Notes |
-| --- | --- | --- |
-| Install | `sudo dnf install vsftpd` | FTP server |
-| Enable | `sudo systemctl enable --now vsftpd` | Start at boot |
-| Test config | `sudo systemctl restart vsftpd` | No built-in full validator |
-| Open firewall | `sudo firewall-cmd --add-service=ftp --permanent` | FTP control |
-| Logs | `sudo journalctl -u vsftpd` | Service logs |
+Read these as actions, not only commands. Each line says what you are trying to prove or change.
+
+- **Install**: `sudo dnf install vsftpd` - FTP server
+- **Enable**: `sudo systemctl enable --now vsftpd` - Start at boot
+- **Test config**: `sudo systemctl restart vsftpd` - No built-in full validator
+- **Open firewall**: `sudo firewall-cmd --add-service=ftp --permanent` - FTP control
+- **Logs**: `sudo journalctl -u vsftpd` - Service logs
+
+## Safe Change Pattern
+
+Back up config files, validate syntax when a validator exists, reload instead of restart when safe, and test from both localhost and a remote client.
 
 ## Configuration Workflow
 
@@ -65,13 +75,16 @@ ftp <server>
 
 ## Troubleshooting
 
-| Problem | Check | Fix |
-| --- | --- | --- |
-| Login denied | `/etc/vsftpd/user_list` | Check allow/deny behavior |
-| Passive mode fails | Firewall/NAT | Configure passive ports and firewall |
-| SELinux denial | `ausearch -m AVC -ts recent` | Use correct labels/booleans |
+Work from the symptom to evidence, then to the smallest safe fix.
+
+- **Login denied**: check `/etc/vsftpd/user_list`, then Check allow/deny behavior.
+- **Passive mode fails**: check Firewall/NAT, then Configure passive ports and firewall.
+- **SELinux denial**: check `ausearch -m AVC -ts recent`, then Use correct labels/booleans.
 
 ## RHEL 9 / RHEL 10 Notes
 
 Prefer SFTP over FTP unless FTP is required for compatibility.
 
+## Page Navigation
+
+[Servers Index](README.md) | [Web Lab](../labs/web-server.md) | [Service Scenario](../scenarios/service-down.md)

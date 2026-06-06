@@ -1,5 +1,7 @@
 # Notes
 
+> **Notes Index** | [Home](../README.md) | [Section Index](../README.md)
+
 This section is the field guide for safe admin habits, revision patterns, and interview thinking.
 
 ## Read This When
@@ -20,3 +22,6 @@ This section is the field guide for safe admin habits, revision patterns, and in
 - [Troubleshooting scenarios](../scenarios/README.md)
 - [Interview questions and answers](../interview/README.md)
 
+## Page Navigation
+
+[Home](../README.md)

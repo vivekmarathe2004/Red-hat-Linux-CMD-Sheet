@@ -1,5 +1,7 @@
 # systemd Services And Boot
 
+> **Core Doc** | [Home](../README.md) | [Section Index](README.md) | [Labs](../labs/README.md) | [Scenarios](../scenarios/README.md)
+
 ## What This Means
 
 This topic is part of the daily RHEL administrator workflow. Learn what the feature controls, which files or services own it, and which command proves the current state.
@@ -9,6 +11,10 @@ Use the commands as tools for evidence. A strong admin does not only run a comma
 ## Purpose
 
 Control services, inspect boot targets, manage unit files, and troubleshoot startup issues.
+
+## Why It Matters
+
+This topic affects real server behavior. If you can explain the purpose, inspect the current state, make a safe change, and verify it, you are doing administrator work rather than memorizing syntax.
 
 ## Important Files
 
@@ -21,35 +27,42 @@ Control services, inspect boot targets, manage unit files, and troubleshoot star
 | `/boot/grub2/grub.cfg` | BIOS GRUB config |
 | `/boot/efi/EFI/redhat/grub.cfg` | UEFI GRUB config |
 
-## Common Commands
+## Command Walkthrough
 
-| Task | Command | Notes |
-| --- | --- | --- |
-| Service status | `systemctl status <service>` | Runtime state |
-| Start service | `sudo systemctl start <service>` | Current boot only |
-| Stop service | `sudo systemctl stop <service>` | Current boot only |
-| Enable service | `sudo systemctl enable <service>` | Start at boot |
-| Enable now | `sudo systemctl enable --now <service>` | Enable and start |
-| Disable service | `sudo systemctl disable <service>` | Do not start at boot |
-| Restart service | `sudo systemctl restart <service>` | Reload process |
-| Reload unit files | `sudo systemctl daemon-reload` | After unit changes |
-| List failed | `systemctl --failed` | Failed units |
-| Default target | `systemctl get-default` | Boot target |
-| Set target | `sudo systemctl set-default multi-user.target` | CLI boot |
+Read these as actions, not only commands. Each line says what you are trying to prove or change.
+
+- **Service status**: `systemctl status <service>` - Runtime state
+- **Start service**: `sudo systemctl start <service>` - Current boot only
+- **Stop service**: `sudo systemctl stop <service>` - Current boot only
+- **Enable service**: `sudo systemctl enable <service>` - Start at boot
+- **Enable now**: `sudo systemctl enable --now <service>` - Enable and start
+- **Disable service**: `sudo systemctl disable <service>` - Do not start at boot
+- **Restart service**: `sudo systemctl restart <service>` - Reload process
+- **Reload unit files**: `sudo systemctl daemon-reload` - After unit changes
+- **List failed**: `systemctl --failed` - Failed units
+- **Default target**: `systemctl get-default` - Boot target
+- **Set target**: `sudo systemctl set-default multi-user.target` - CLI boot
 
 ## Configuration Workflow
 
 ```bash
 # Create a service override
+
 sudo systemctl edit <service>
 
 # Apply and restart
+
 sudo systemctl daemon-reload
 sudo systemctl restart <service>
 
 # View logs for the unit
+
 journalctl -u <service> -b
 ```
+
+## Try It In A VM
+
+Run the workflow on a disposable RHEL VM. Change one setting, verify the result, then undo or document what changed. This builds the habit you need for production systems.
 
 ## Verify
 
@@ -62,11 +75,11 @@ journalctl -b -p warning
 
 ## Troubleshooting
 
-| Problem | Check | Fix |
-| --- | --- | --- |
-| Unit file changed but ignored | `systemctl cat <service>` | Run `systemctl daemon-reload` |
-| Service fails at boot | `journalctl -u <service> -b` | Fix config, dependency, or permissions |
-| Wrong boot target | `systemctl get-default` | Set correct target |
+Work from the symptom to evidence, then to the smallest safe fix.
+
+- **Unit file changed but ignored**: check `systemctl cat <service>`, then Run `systemctl daemon-reload`.
+- **Service fails at boot**: check `journalctl -u <service> -b`, then Fix config, dependency, or permissions.
+- **Wrong boot target**: check `systemctl get-default`, then Set correct target.
 
 ## Common Mistakes
 
@@ -83,3 +96,6 @@ A strong answer explains the concept, names the command, and says how you would 
 
 Both use systemd. Bootloader paths differ by BIOS versus UEFI rather than by RHEL version.
 
+## Page Navigation
+
+[Previous](04-users-groups-and-permissions.md) | [Docs Index](README.md) | [Next](06-networking.md)

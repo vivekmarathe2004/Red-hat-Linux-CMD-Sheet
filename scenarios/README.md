@@ -1,5 +1,7 @@
 # Troubleshooting Scenarios
 
+> **Scenarios Index** | [Home](../README.md) | [Section Index](../README.md)
+
 These scenarios teach diagnostic thinking. They are written for real admin work and interviews: start from symptoms, form likely causes, collect evidence, fix carefully, and verify.
 
 ## How To Work A Scenario
@@ -47,3 +49,6 @@ sudo ausearch -m AVC -ts recent
 df -hT
 ```
 
+## Page Navigation
+
+[Home](../README.md)

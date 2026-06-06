@@ -1,5 +1,7 @@
 # Syllabus
 
+> **Syllabus Index** | [Home](../README.md) | [Section Index](../README.md)
+
 This is the course map for the repository. Use it to study RHEL 9 and RHEL 10 in a practical order instead of jumping randomly between commands.
 
 ## Main Course
@@ -22,3 +24,6 @@ This is the course map for the repository. Use it to study RHEL 9 and RHEL 10 in
 - [General notes](../notes/general-notes.md)
 - [Interview questions and answers](../interview/README.md)
 
+## Page Navigation
+
+[Home](../README.md)

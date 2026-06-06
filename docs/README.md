@@ -1,5 +1,7 @@
 # Core Administration Docs
 
+> **Core Docs Index** | [Home](../README.md) | [Section Index](../README.md)
+
 These pages teach the everyday skills behind RHEL administration. Read them as short tutorials: understand the concept, run the commands, verify the result, then explain it in your own words.
 
 ## How To Use This Section
@@ -43,3 +45,6 @@ Start at the top if you are learning. Jump directly to a topic if you are troubl
 - Test yourself with [troubleshooting scenarios](../scenarios/README.md).
 - Use [cheatsheets](../cheatsheets/README.md) only after the concept is clear.
 
+## Page Navigation
+
+[Home](../README.md)

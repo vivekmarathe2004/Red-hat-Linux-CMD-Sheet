@@ -1,5 +1,7 @@
 # Server Recipes
 
+> **Server Index** | [Home](../README.md) | [Section Index](../README.md)
+
 These pages show how to deploy common RHEL server roles safely. Each recipe explains what the service does, which files matter, how to configure it, how to verify it, and how to troubleshoot it.
 
 ## Deployment Mindset
@@ -53,3 +55,6 @@ getenforce
 sudo ausearch -m AVC -ts recent
 ```
 
+## Page Navigation
+
+[Home](../README.md)

@@ -1,5 +1,7 @@
 # RHEL Linux Interview Questions And Answers
 
+> **Interview** | [Home](../README.md) | [Section Index](README.md) | [Scenarios](../scenarios/README.md) | [Labs](../labs/README.md)
+
 This guide is written for spoken interview practice. Do not memorize only the command. Learn to explain what you check first, why you check it, and how you verify the fix.
 
 ## Answer Format
@@ -309,3 +311,7 @@ Answer: "I suspect `/etc/fstab`, compare it with `blkid` and `lsblk -f`, fix the
 ## Final Interview Advice
 
 The strongest answer is calm and ordered. Say what you check first, show the command, explain the expected output, and finish with how you verify recovery.
+
+## Page Navigation
+
+[Interview Index](README.md) | [Scenarios](../scenarios/README.md)

@@ -1,5 +1,7 @@
 # RHEL 9/10 Full Study Syllabus
 
+> **Syllabus** | [Home](../README.md) | [Section Index](README.md) | [Labs](../labs/README.md) | [Interview](../interview/README.md)
+
 ## How To Read This Guide
 
 Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
@@ -1421,3 +1423,7 @@ Read this as a practical field guide, not a dictionary. Each section should help
 Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 "I start broad with failed units and boot errors, then narrow into service logs, ports, firewall, SELinux, storage, and package state."
+
+## Page Navigation
+
+[Syllabus Index](README.md) | [Labs](../labs/README.md)

@@ -1,5 +1,7 @@
 # Lab: Storage And LVM
 
+> **Lab** | [Home](../README.md) | [Section Index](README.md) | [Docs](../docs/README.md) | [Scenarios](../scenarios/README.md)
+
 ## Scenario Context
 
 Practice this lab on a disposable RHEL VM. Treat it like a small work ticket: understand the goal, make the change, verify it, and clean up after yourself.
@@ -9,6 +11,10 @@ By the end, you should be able to explain what changed, where the configuration 
 ## Objective
 
 Create, mount, and extend an LVM logical volume.
+
+## Why This Lab Matters
+
+This lab turns a common admin task into muscle memory. The important part is not just reaching the final state, but proving that the system is actually configured correctly.
 
 ## Requirements
 
@@ -68,7 +74,14 @@ sudo pvremove <device>
 - Leaving test users, packages, services, or mounts behind after cleanup.
 - Practicing only the success path and never checking logs when something fails.
 
+## Review Questions
+
+After the lab, answer these out loud: what changed, which command changed it, where is it stored, how did you verify it, and what would fail if it were misconfigured?
+
 ## Interview Takeaway
 
 Know PV, VG, LV, filesystem, mountpoint, UUID, and why XFS can grow but not shrink.
 
+## Page Navigation
+
+[Previous](firewall-and-selinux.md) | [Labs Index](README.md) | [Next](ssh-remote-access.md)

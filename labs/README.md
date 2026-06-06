@@ -1,5 +1,7 @@
 # Hands-On RHEL Labs
 
+> **Labs Index** | [Home](../README.md) | [Section Index](../README.md)
+
 These labs turn the command sheets into practice. Use a disposable RHEL 9 or RHEL 10 VM, because several labs change users, packages, services, storage, firewall rules, and SELinux labels.
 
 ## How To Practice
@@ -39,3 +41,6 @@ For each lab:
 
 A lab is complete only when you can answer: what changed, where it is configured, how you verified it, and how you would troubleshoot it if it failed.
 
+## Page Navigation
+
+[Home](../README.md)
