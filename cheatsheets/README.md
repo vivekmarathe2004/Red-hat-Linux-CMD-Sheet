@@ -2,6 +2,16 @@
 
 Fast lookup references for common RHEL administration work.
 
+## Quick Navigation
+
+| Need | Open |
+| --- | --- |
+| Commands | [Command index](command-index.md) |
+| Paths | [File paths](file-paths.md) |
+| Ports | [Ports and services](ports-and-services.md) |
+| Config validation | [Configuration files](config-files.md) |
+| Version reminders | [RHEL 9 vs RHEL 10 notes](rhel9-vs-rhel10-notes.md) |
+
 ## Pages
 
 | File | Use It For |

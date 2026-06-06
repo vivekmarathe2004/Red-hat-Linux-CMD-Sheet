@@ -4,6 +4,16 @@ Practical setup recipes for common RHEL server roles.
 
 Each recipe follows the same general pattern: install, configure, enable, firewall or SELinux notes, verify, and troubleshoot.
 
+## Server Dashboard
+
+| Category | Recipes |
+| --- | --- |
+| Web | Apache HTTPD, Nginx |
+| Databases | MariaDB/MySQL, PostgreSQL |
+| Network services | DNS, DHCP, Chrony |
+| File sharing | NFS, Samba, FTP |
+| Operations | Postfix, Rsyslog, Cockpit, IdM overview |
+
 ## Web
 
 - [Apache HTTPD](apache-httpd.md)

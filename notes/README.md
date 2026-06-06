@@ -2,6 +2,14 @@
 
 This directory is for practical RHEL admin notes and revision points. It is not the full syllabus and not the interview section.
 
+## Notes Dashboard
+
+| Use Case | File |
+| --- | --- |
+| Admin mindset | [general-notes.md](general-notes.md) |
+| Safe change habits | [general-notes.md](general-notes.md) |
+| Interview answer pattern | [general-notes.md](general-notes.md) |
+
 ## Where Is What
 
 | File | What It Contains |

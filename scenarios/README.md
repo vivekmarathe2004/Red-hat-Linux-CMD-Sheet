@@ -2,6 +2,16 @@
 
 Real-world RHEL troubleshooting scenarios for students, interviews, and junior admin practice.
 
+## Scenario Dashboard
+
+| Diagnostic Area | Practice |
+| --- | --- |
+| Service health | Failed units, logs, dependencies |
+| Network access | Listen address, firewall, DNS |
+| Security controls | SELinux labels, booleans, denials |
+| Storage | Disk full, fstab, mounts |
+| Apps | Web 403/502, repo/package issues |
+
 ## Scenarios
 
 | Scenario | Main Skill |
@@ -35,4 +45,3 @@ df -hT
 - [Troubleshooting docs](../docs/15-troubleshooting.md)
 - [Hands-on labs](../labs/README.md)
 - [Interview Q&A](../interview/rhel-linux-interview-q-and-a.md)
-

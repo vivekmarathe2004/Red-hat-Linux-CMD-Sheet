@@ -4,6 +4,15 @@ Practice labs for RHEL 9 and RHEL 10 students, job-prep learners, and junior adm
 
 > Use a VM or disposable lab machine. Several labs change users, services, storage, firewall rules, SELinux labels, and packages.
 
+## Lab Dashboard
+
+| Track | Labs |
+| --- | --- |
+| Core admin | Users, permissions, packages, systemd |
+| Platform admin | Networking, firewall, SELinux, storage |
+| Services | SSH, containers, web, database |
+| Troubleshooting | End-to-end diagnostic drill |
+
 ## Recommended Order
 
 | Order | Lab | Main Skill |
@@ -38,4 +47,3 @@ Each lab includes:
 - [Core docs](../docs/README.md)
 - [Troubleshooting scenarios](../scenarios/README.md)
 - [Interview Q&A](../interview/rhel-linux-interview-q-and-a.md)
-

@@ -1,0 +1,16 @@
+<svg width="1280" height="360" viewBox="0 0 1280 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="360" rx="24" fill="#151515"/>
+  <rect x="34" y="34" width="1212" height="292" rx="18" fill="#1F1F1F" stroke="#3A3A3A" stroke-width="2"/>
+  <circle cx="72" cy="68" r="8" fill="#E00"/>
+  <circle cx="100" cy="68" r="8" fill="#F2C94C"/>
+  <circle cx="128" cy="68" r="8" fill="#27AE60"/>
+  <path d="M58 112H1222" stroke="#333" stroke-width="2"/>
+  <text x="74" y="158" font-family="Consolas, Menlo, monospace" font-size="24" fill="#D8D8D8">$ sudo dnf install knowledge practice troubleshooting</text>
+  <text x="74" y="214" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="48" font-weight="700" fill="#FFFFFF">Red Hat Linux Command Sheets</text>
+  <text x="76" y="260" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" fill="#C9C9C9">RHEL 9/10 docs, labs, scenarios, server recipes, syllabus, and interview prep</text>
+  <rect x="858" y="132" width="300" height="112" rx="14" fill="#E00"/>
+  <text x="890" y="178" font-family="Consolas, Menlo, monospace" font-size="22" fill="#FFFFFF">systemctl status</text>
+  <text x="890" y="212" font-family="Consolas, Menlo, monospace" font-size="22" fill="#FFFFFF">journalctl -u</text>
+  <path d="M818 280H1160" stroke="#E00" stroke-width="4" stroke-linecap="round"/>
+</svg>
+
