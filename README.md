@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.svg" alt="Red Hat Linux Command Sheets logo" width="86">
+  <img src="assets/repo-banner.png" alt="Red Hat Linux Command Sheets banner" width="100%">
 </p>
 
 <h1 align="center">Red Hat Linux Command Sheets</h1>
