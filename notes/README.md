@@ -13,6 +13,8 @@ This directory is for practical RHEL admin notes and revision points. It is not 
 | Section | Use It For |
 | --- | --- |
 | [Full study syllabus](../syllabus/rhel-linux-full-syllabus.md) | Structured module-wise learning |
+| [Hands-on labs](../labs/README.md) | VM-based practice |
+| [Troubleshooting scenarios](../scenarios/README.md) | Real-world diagnosis practice |
 | [Interview questions and answers](../interview/README.md) | Interview preparation |
 | [Command cheatsheets](../cheatsheets/command-index.md) | Fast command lookup |
 | [Core command sheets](../docs/README.md) | Detailed topic-wise command sheets |

@@ -10,6 +10,31 @@ This syllabus organizes the repository into a complete learning path for Red Hat
 4. Troubleshoot using logs, status commands, firewall checks, and SELinux checks.
 5. Write your own notes after every lab.
 
+## Job-Prep Learning Path
+
+| Phase | Focus | Output |
+| --- | --- | --- |
+| Foundation | Shell, files, users, packages | You can navigate, install tools, and explain permissions |
+| Admin core | systemd, networking, firewall, SELinux, storage | You can configure and verify a RHEL server |
+| Services | SSH, web, database, containers, logging | You can deploy common services safely |
+| Troubleshooting | Logs, ports, SELinux, DNS, storage, repos | You can diagnose issues in a repeatable order |
+| Interview prep | Scenario answers and command explanation | You can explain what you check first and why |
+
+## Practice Resources
+
+- [Hands-on labs](../labs/README.md)
+- [Troubleshooting scenarios](../scenarios/README.md)
+- [Interview questions and answers](../interview/rhel-linux-interview-q-and-a.md)
+- [General revision notes](../notes/general-notes.md)
+
+## What To Prove Before Interviews
+
+- You can explain `systemctl status`, `journalctl`, `ss`, `firewall-cmd`, `getenforce`, `ausearch`, `lsblk`, `df`, `dnf`, and `rpm`.
+- You can separate service, network, firewall, SELinux, DNS, permission, package, and storage problems.
+- You can describe a safe change process: check, back up, edit, validate, reload, verify.
+- You can troubleshoot without immediately disabling SELinux or firewalld.
+- You can explain commands in plain language, not only memorize them.
+
 ## Module 01: Linux Fundamentals
 
 ### Objectives
@@ -52,6 +77,20 @@ history
 - Use `man`, `--help`, and package docs to understand a command.
 - Create a small command pipeline using `grep`, `sort`, and `uniq`.
 
+### Expected Outcome
+
+You can move around the filesystem, read help, inspect files, and build simple shell command pipelines.
+
+### Revision Checkpoint
+
+- Explain absolute vs relative path.
+- Explain why `/etc`, `/var`, `/home`, `/tmp`, and `/boot` matter.
+- Explain how you would find help for an unknown command.
+
+### Must Explain In Interview
+
+“I use `man`, `--help`, and package documentation first, then test commands safely in a lab before using them on production systems.”
+
 ## Module 02: Installation, Subscription, And Repositories
 
 ### Objectives
@@ -90,6 +129,20 @@ dnf history
 - Install and remove a test package.
 - Review `dnf history`.
 
+### Expected Outcome
+
+You can register a RHEL system, identify enabled repositories, and understand why RHEL 9 and RHEL 10 repo IDs differ.
+
+### Revision Checkpoint
+
+- Explain BaseOS vs AppStream.
+- Explain what `subscription-manager status` proves.
+- Explain what a release lock can affect.
+
+### Must Explain In Interview
+
+“If a package is not found, I check registration, enabled repos, release lock, DNS/proxy, and package name.”
+
 ## Module 03: Package Management
 
 ### Objectives
@@ -125,6 +178,20 @@ sudo dnf history undo <id>
 - Find which package provides a command.
 - List files installed by a package.
 - Identify which package owns `/etc/ssh/sshd_config`.
+
+### Expected Outcome
+
+You can install packages with dependency resolution and use RPM queries to inspect installed files.
+
+### Revision Checkpoint
+
+- Explain `dnf` vs `rpm`.
+- Explain `rpm -qf`.
+- Explain `dnf history`.
+
+### Must Explain In Interview
+
+“I use `dnf` for repo-based package operations and `rpm` for direct package database queries.”
 
 ## Module 04: Files, Permissions, And ACLs
 
@@ -165,6 +232,20 @@ chattr +i <path>
 - Create a shared directory using SGID.
 - Add ACL access for one user.
 - Troubleshoot a permission denied error with `namei -l`.
+
+### Expected Outcome
+
+You can design simple shared directory access and diagnose permission failures across parent directories.
+
+### Revision Checkpoint
+
+- Explain read/write/execute on files vs directories.
+- Explain SUID, SGID, sticky bit.
+- Explain ACLs and `getfacl`.
+
+### Must Explain In Interview
+
+“When access fails, I check every parent directory with `namei -l`, then ownership, mode, ACLs, and SELinux labels.”
 
 ## Module 05: Users, Groups, And Sudo
 
@@ -207,6 +288,20 @@ sudo -l -U <user>
 - Create a locked service account.
 - Configure a sudo drop-in file under `/etc/sudoers.d/`.
 
+### Expected Outcome
+
+You can manage local identities, sudo access, and basic account security.
+
+### Revision Checkpoint
+
+- Explain UID, GID, primary group, supplementary groups.
+- Explain why group changes require a new login session.
+- Explain why `visudo` matters.
+
+### Must Explain In Interview
+
+“I validate sudoers syntax with `visudo -c` and confirm user access with `sudo -l -U <user>`.”
+
 ## Module 06: systemd And Boot
 
 ### Objectives
@@ -248,6 +343,20 @@ journalctl -u <service> -b
 - Create a systemd override.
 - Troubleshoot a failed service from logs.
 
+### Expected Outcome
+
+You can control services, inspect unit files, manage boot startup, and read logs for failed services.
+
+### Revision Checkpoint
+
+- Explain `start` vs `enable`.
+- Explain `restart` vs `reload`.
+- Explain when to run `daemon-reload`.
+
+### Must Explain In Interview
+
+“For a failed service, I check `systemctl status`, then `journalctl -u <service> -b`, validate config, and inspect ports/SELinux if needed.”
+
 ## Module 07: Networking
 
 ### Objectives
@@ -288,6 +397,20 @@ tracepath <host>
 - Set a static IP using `nmcli`.
 - Configure DNS servers.
 - Troubleshoot a service listening only on `127.0.0.1`.
+
+### Expected Outcome
+
+You can inspect network state and distinguish address, route, DNS, and listening-port issues.
+
+### Revision Checkpoint
+
+- Explain interface vs NetworkManager connection profile.
+- Explain `127.0.0.1` vs `0.0.0.0` listening.
+- Explain how DNS is configured through NetworkManager.
+
+### Must Explain In Interview
+
+“I separate connectivity from name resolution: first IP and route, then DNS, then service and firewall.”
 
 ## Module 08: Firewall And SELinux
 
@@ -334,6 +457,20 @@ sudo ausearch -m AVC -ts recent
 - Move web content to `/srv/www` and fix SELinux labels.
 - Add an SELinux port mapping for a non-standard service port.
 
+### Expected Outcome
+
+You can open services safely and fix common SELinux label, boolean, and port-context issues.
+
+### Revision Checkpoint
+
+- Explain runtime vs permanent firewalld rules.
+- Explain SELinux enforcing vs permissive.
+- Explain labels, booleans, and port types.
+
+### Must Explain In Interview
+
+“I do not disable SELinux as a fix; I use AVC logs to identify the correct label, boolean, or port type.”
+
 ## Module 09: Storage, Filesystems, And LVM
 
 ### Objectives
@@ -377,6 +514,20 @@ sudo lvextend -r -L +<size> /dev/<vg>/<lv>
 - Mount it persistently using UUID.
 - Extend it online.
 
+### Expected Outcome
+
+You can safely create and grow lab storage using LVM and persistent mounts.
+
+### Revision Checkpoint
+
+- Explain PV, VG, LV.
+- Explain why UUIDs are used in `/etc/fstab`.
+- Explain why XFS can grow but not shrink.
+
+### Must Explain In Interview
+
+“Before storage changes, I confirm the target disk with `lsblk -f` and back up `/etc/fstab` before editing persistent mounts.”
+
 ## Module 10: Logs, Monitoring, And Performance
 
 ### Objectives
@@ -416,6 +567,20 @@ sudo sos report
 - Find which process is using a port.
 - Generate a diagnostic report.
 
+### Expected Outcome
+
+You can collect useful system evidence before making changes.
+
+### Revision Checkpoint
+
+- Explain journald vs classic logs.
+- Explain `ss -tulpn`.
+- Explain `df` vs `du`.
+
+### Must Explain In Interview
+
+“I gather logs, process state, ports, disk, and memory information before changing a running production service.”
+
 ## Module 11: SSH And Remote Access
 
 ### Objectives
@@ -451,6 +616,20 @@ sudo journalctl -u sshd -b
 - Disable password login in a lab.
 - Troubleshoot failed SSH login using logs.
 
+### Expected Outcome
+
+You can configure SSH safely and avoid remote lockout.
+
+### Revision Checkpoint
+
+- Explain `authorized_keys`.
+- Explain key permissions.
+- Explain why `sshd -t` is important.
+
+### Must Explain In Interview
+
+“Before restarting SSH remotely, I keep an existing session open and validate config with `sshd -t`.”
+
 ## Module 12: Shell Scripting And Automation
 
 ### Objectives
@@ -484,6 +663,20 @@ logger "message"
 - Write a script that checks disk usage.
 - Schedule it with cron.
 - Log output using `logger`.
+
+### Expected Outcome
+
+You can write small admin scripts and schedule them safely.
+
+### Revision Checkpoint
+
+- Explain exit codes.
+- Explain why scripts should use absolute paths in cron.
+- Explain when a systemd timer is better than cron.
+
+### Must Explain In Interview
+
+“Cron jobs have a limited environment, so I set `PATH` or use absolute command paths.”
 
 ## Module 13: Containers
 
@@ -520,6 +713,20 @@ skopeo inspect docker://<image>
 - Run a rootless web container.
 - Expose a port.
 - Generate a systemd unit for a container.
+
+### Expected Outcome
+
+You can run and inspect containers using the RHEL-native Podman toolset.
+
+### Revision Checkpoint
+
+- Explain rootless Podman.
+- Explain image vs container.
+- Explain port mapping.
+
+### Must Explain In Interview
+
+“Podman is daemonless and supports rootless containers, which helps reduce privilege exposure.”
 
 ## Module 14: Web, Database, And Infrastructure Services
 
@@ -560,6 +767,20 @@ sudo ausearch -m AVC -ts recent
 - Configure one file sharing service.
 - Configure time sync with Chrony.
 
+### Expected Outcome
+
+You can deploy common service roles and verify them through service status, logs, ports, firewall, and SELinux.
+
+### Revision Checkpoint
+
+- Explain service-specific validation commands.
+- Explain why remote access may need app config, firewall, and SELinux changes.
+- Explain where service logs usually live.
+
+### Must Explain In Interview
+
+“I verify a service by checking the process, port, firewall, SELinux, local test, remote test, and logs.”
+
 ## Module 15: Security And Hardening
 
 ### Objectives
@@ -597,6 +818,20 @@ sudo firewall-cmd --list-all
 - Enable auditd.
 - Check crypto policy.
 - Validate sudoers.
+
+### Expected Outcome
+
+You can apply basic hardening while preserving manageability.
+
+### Revision Checkpoint
+
+- Explain least privilege.
+- Explain why direct root SSH login is risky.
+- Explain crypto policies.
+
+### Must Explain In Interview
+
+“Hardening should be tested; I avoid breaking legacy clients without checking crypto policy, logs, and application requirements.”
 
 ## Module 16: Troubleshooting Mastery
 
@@ -641,3 +876,16 @@ dnf repolist
 - Break `/etc/fstab` in a VM and recover.
 - Diagnose a firewall-blocked service.
 
+### Expected Outcome
+
+You can diagnose common RHEL failures using a consistent evidence-first process.
+
+### Revision Checkpoint
+
+- Explain your first five troubleshooting commands.
+- Explain how to distinguish firewall vs service vs SELinux.
+- Explain how to recover from a bad `/etc/fstab`.
+
+### Must Explain In Interview
+
+“I start broad with failed units and boot errors, then narrow into service logs, ports, firewall, SELinux, storage, and package state.”

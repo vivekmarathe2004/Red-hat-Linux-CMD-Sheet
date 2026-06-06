@@ -43,3 +43,9 @@ getenforce
 sudo ausearch -m AVC -ts recent
 ```
 
+## Related Practice
+
+- [Web server lab](../labs/web-server.md)
+- [Database server lab](../labs/database-server.md)
+- [Service down scenario](../scenarios/service-down.md)
+- [Web 403 or 502 scenario](../scenarios/web-403-502.md)

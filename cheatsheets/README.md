@@ -16,5 +16,6 @@ Fast lookup references for common RHEL administration work.
 
 - [Core administration docs](../docs/README.md)
 - [Server recipes](../servers/README.md)
+- [Hands-on labs](../labs/README.md)
+- [Troubleshooting scenarios](../scenarios/README.md)
 - [General notes](../notes/general-notes.md)
-

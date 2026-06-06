@@ -26,6 +26,7 @@ Topic-wise RHEL 9 and RHEL 10 administration command sheets.
 ## Related
 
 - [Full syllabus](../syllabus/rhel-linux-full-syllabus.md)
+- [Hands-on labs](../labs/README.md)
+- [Troubleshooting scenarios](../scenarios/README.md)
 - [Command index](../cheatsheets/command-index.md)
 - [General notes](../notes/general-notes.md)
-

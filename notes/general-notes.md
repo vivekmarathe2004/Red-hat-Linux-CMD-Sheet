@@ -106,6 +106,60 @@ dnf repolist
 - Use package-managed config locations instead of random custom paths unless there is a clear reason.
 - Do not disable security controls to make a problem disappear. Use the denial or error message to find the correct fix.
 
+## Student And Job-Prep Strategy
+
+- Learn every topic in this order: concept, command, config file, verification, troubleshooting.
+- For each command, memorize what it proves, not only what it prints.
+- Practice saying answers aloud. Interviews reward clear diagnostic thinking.
+- Build a small VM lab and repeat labs until commands feel familiar.
+- Keep one page of personal mistakes; reviewing mistakes is faster than rereading everything.
+- Do not skip SELinux, firewalld, storage, and systemd logs. These topics appear constantly in practical interviews.
+
+## Answer Pattern For Interviews
+
+Use this structure when answering troubleshooting questions:
+
+1. State what you would check first.
+2. Name the command.
+3. Explain what result you expect.
+4. Explain the next branch if the result is good or bad.
+
+Example:
+
+```text
+I would first check whether the service is running with systemctl status.
+If it is failed, I read journalctl -u service -b.
+If it is running, I check whether it is listening with ss -tulpn.
+Then I check firewalld, SELinux, and application logs.
+```
+
+## Common Beginner Mistakes
+
+| Mistake | Better Habit |
+| --- | --- |
+| Running commands without checking the target | Confirm host, device, service, and path first |
+| Disabling SELinux permanently | Read AVC denials and fix labels, booleans, or port types |
+| Editing `/etc/resolv.conf` directly | Use NetworkManager connection settings |
+| Restarting SSH remotely without validation | Keep a session open and run `sshd -t` |
+| Editing `/etc/fstab` without testing | Back it up and run `mount -a` |
+| Opening firewall ports without checking listen state | Confirm service is listening with `ss -tulpn` |
+| Deleting logs blindly during disk-full issues | Identify growth source and clean safely |
+| Using `kill -9` first | Try graceful stop or normal kill before force |
+
+## What Every Job-Ready Beginner Should Know
+
+| Area | You Should Be Able To Explain |
+| --- | --- |
+| systemd | service state, enable vs start, logs, failed units |
+| Networking | IP, route, DNS, listen address, ports |
+| Firewall | zones, services, runtime vs permanent rules |
+| SELinux | enforcing/permissive, labels, booleans, AVC denials |
+| Storage | block devices, filesystems, fstab, LVM basics |
+| Packages | DNF vs RPM, repo enablement, package ownership |
+| Users | UID/GID, groups, sudo, password aging |
+| Web | 403 vs 502 troubleshooting |
+| SSH | keys, config validation, remote lockout prevention |
+
 ## Common Command Patterns
 
 | Goal | Pattern |
@@ -310,3 +364,41 @@ For every server you configure, record:
 - Firewall services or ports opened.
 - SELinux booleans, contexts, or ports changed.
 - Verification commands and results.
+
+## Daily Revision Drill
+
+Run these in a lab VM and explain each output:
+
+```bash
+cat /etc/redhat-release
+hostnamectl
+systemctl --failed
+journalctl -p err -b --no-pager
+ip addr
+ip route
+sudo ss -tulpn
+sudo firewall-cmd --list-all
+getenforce
+df -hT
+lsblk -f
+dnf repolist
+```
+
+## Before You Say "It Is A Network Issue"
+
+Check these separately:
+
+- Does the server have the right IP?
+- Does it have a route?
+- Does DNS resolve?
+- Is the service listening?
+- Is it listening on the right address?
+- Is firewalld allowing traffic?
+- Is SELinux blocking the process?
+- Is an external firewall or cloud rule blocking it?
+
+## Strong Interview Closing Line
+
+```text
+After fixing the issue, I verify the service from localhost and from a remote client, check logs again, and document what changed.
+```

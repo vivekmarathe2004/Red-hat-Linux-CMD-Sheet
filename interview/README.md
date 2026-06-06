@@ -5,6 +5,8 @@ This directory contains interview preparation material for Linux and Red Hat Ent
 ## Pages
 
 - [Full interview Q&A](rhel-linux-interview-q-and-a.md)
+- [Troubleshooting scenarios](../scenarios/README.md)
+- [Hands-on labs](../labs/README.md)
 
 ## How To Use
 
@@ -12,4 +14,3 @@ This directory contains interview preparation material for Linux and Red Hat Ent
 - Practice the command behind each answer.
 - Convert short answers into spoken explanations.
 - For scenario questions, explain your troubleshooting order before giving commands.
-

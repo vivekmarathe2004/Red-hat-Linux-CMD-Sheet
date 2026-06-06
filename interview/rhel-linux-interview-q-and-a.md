@@ -220,3 +220,65 @@
 | Disk is full. | Use `df -hT`, `du -xhd1 /`, check logs/cache, identify growth source, and extend storage if needed. |
 | Port is already in use. | Use `ss -tulpn | grep <port>` to find the process, then stop, reconfigure, or change the conflicting service. |
 
+## What Would You Check First?
+
+| Question | Strong Spoken Answer |
+| --- | --- |
+| A service is down. What do you check first? | “I check `systemctl status <service>` first because it shows whether the service is active, failed, or disabled. Then I read `journalctl -u <service> -b` for the exact failure.” |
+| A server is slow. What do you check first? | “I check load, CPU, memory, disk, and logs using `uptime`, `top`, `free -h`, `df -hT`, and `journalctl -p err -b`.” |
+| A user cannot log in. What do you check first? | “I check whether the account exists and is unlocked with `id`, `getent passwd`, `passwd -S`, then I check `/var/log/secure`.” |
+| A mount does not work after reboot. What do you check first? | “I compare `/etc/fstab` with `blkid` and `lsblk -f`, then run `mount -a` to reproduce the error safely.” |
+| A website returns 403. What do you check first? | “I check file permissions, parent directory permissions with `namei -l`, SELinux labels with `ls -Z`, and web error logs.” |
+| A website returns 502. What do you check first? | “I check whether the backend is running and listening, then verify the proxy target, firewall, SELinux, and web error logs.” |
+| DNF cannot find a package. What do you check first? | “I check subscription status, enabled repos, release lock, package name, and metadata with `dnf repolist` and `dnf makecache`.” |
+| SSH is not working. What do you check first? | “I check `sshd` status, validate config with `sshd -t`, confirm port 22 is listening, check firewall, then read `/var/log/secure`.” |
+
+## Command Explanation Questions
+
+| Command | What To Say |
+| --- | --- |
+| `systemctl status <service>` | Shows service state, recent logs, PID, and whether systemd considers the unit healthy. |
+| `journalctl -u <service> -b` | Shows logs for one service from the current boot. |
+| `ss -tulpn` | Shows listening TCP/UDP sockets and the processes using them. |
+| `firewall-cmd --list-all` | Shows allowed services and ports in the active firewalld zone. |
+| `getenforce` | Shows the current SELinux mode. |
+| `ausearch -m AVC -ts recent` | Finds recent SELinux access denials. |
+| `lsblk -f` | Shows block devices, filesystems, labels, and UUIDs. |
+| `df -hT` | Shows mounted filesystem usage and filesystem type. |
+| `rpm -qf <path>` | Shows which installed package owns a file. |
+| `dnf history` | Shows package transaction history. |
+| `namei -l <path>` | Shows permissions for every directory in a path. |
+| `mount -a` | Tests all mount entries in `/etc/fstab`. |
+
+## Short HR-Style Technical Answers
+
+| Question | Answer |
+| --- | --- |
+| How do you work safely on production? | “I check current state, back up configs, make one change at a time, validate, reload instead of restart when possible, and verify from logs and clients.” |
+| What do you do when you do not know a command? | “I use `man`, `--help`, package docs, and test in a lab before using it on production.” |
+| How do you document a fix? | “I record the symptom, root cause, commands used, files changed, verification, and rollback notes.” |
+| How do you avoid repeating incidents? | “I identify the root cause, add monitoring or checks, document the fix, and automate safe validation where possible.” |
+| What makes a good Linux admin? | “Careful troubleshooting, strong fundamentals, respect for production risk, and clear documentation.” |
+
+## Practice Scenarios To Rehearse
+
+- Service failed after config edit.
+- SSH inaccessible after hardening.
+- Apache 403 after moving document root.
+- Nginx 502 to backend app.
+- Disk full under `/var`.
+- Broken `/etc/fstab`.
+- Package missing because repo disabled.
+- DNS fails but IP connectivity works.
+- SELinux blocks custom service path.
+- Firewall allows wrong zone.
+
+For each scenario, practice this answer format:
+
+```text
+First I check ...
+The command is ...
+If the output shows ...
+Then I check ...
+After fixing, I verify with ...
+```
