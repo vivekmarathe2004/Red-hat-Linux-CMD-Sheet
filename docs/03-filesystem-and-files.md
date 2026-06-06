@@ -1,5 +1,11 @@
 # Filesystem And Files
 
+## What This Means
+
+This topic is part of the daily RHEL administrator workflow. Learn what the feature controls, which files or services own it, and which command proves the current state.
+
+Use the commands as tools for evidence. A strong admin does not only run a command; they explain what the output proves and what they would check next.
+
 ## Purpose
 
 Navigate, inspect, copy, move, archive, search, and protect files.
@@ -62,6 +68,17 @@ du -sh /opt/<app>
 | Permission denied | `namei -l <path>` | Fix parent permissions too |
 | No space left | `df -h` and `du -xhd1 /` | Clean logs/cache or expand storage |
 | File busy | `lsof <file>` | Stop process or choose maintenance window |
+
+## Common Mistakes
+
+- Running commands without confirming the target host, service, path, or device.
+- Changing configuration without making a quick backup first.
+- Skipping verification and assuming the command worked.
+- Treating permission, firewall, SELinux, DNS, and service failures as the same problem.
+
+## Interview Takeaway
+
+A strong answer explains the concept, names the command, and says how you would verify the output. For Filesystem And Files, practice saying what you check first and why.
 
 ## RHEL 9 / RHEL 10 Notes
 

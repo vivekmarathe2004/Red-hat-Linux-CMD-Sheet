@@ -1,32 +1,39 @@
 # Troubleshooting Scenarios
 
-Real-world RHEL troubleshooting scenarios for students, interviews, and junior admin practice.
+These scenarios teach diagnostic thinking. They are written for real admin work and interviews: start from symptoms, form likely causes, collect evidence, fix carefully, and verify.
 
-## Scenario Dashboard
+## How To Work A Scenario
 
-| Diagnostic Area | Practice |
-| --- | --- |
-| Service health | Failed units, logs, dependencies |
-| Network access | Listen address, firewall, DNS |
-| Security controls | SELinux labels, booleans, denials |
-| Storage | Disk full, fstab, mounts |
-| Apps | Web 403/502, repo/package issues |
+Do not jump straight to the fix. Use this order:
 
-## Scenarios
+1. Confirm the symptom.
+2. Check service state and logs.
+3. Check ports, firewall, SELinux, DNS, storage, and packages as needed.
+4. Make one fix.
+5. Verify locally and remotely.
+6. Explain the root cause.
 
-| Scenario | Main Skill |
-| --- | --- |
-| [Service down](service-down.md) | systemd and logs |
-| [Port blocked](port-blocked.md) | sockets and firewall |
-| [SELinux denial](selinux-denial.md) | AVC diagnosis |
-| [Disk full](disk-full.md) | storage triage |
-| [Broken fstab](broken-fstab.md) | boot and mounts |
-| [DNS failure](dns-failure.md) | resolver troubleshooting |
-| [SSH lockout](ssh-lockout.md) | safe remote access |
-| [Package repo issue](package-repo-issue.md) | DNF and subscription |
-| [Web 403 or 502](web-403-502.md) | web service triage |
+## Scenario List
 
-## Universal Flow
+### Service And Access
+
+- [Service down](service-down.md)
+- [Port blocked](port-blocked.md)
+- [SSH lockout](ssh-lockout.md)
+
+### Security And Policy
+
+- [SELinux denial](selinux-denial.md)
+- [Web 403 or 502](web-403-502.md)
+
+### Platform Problems
+
+- [Disk full](disk-full.md)
+- [Broken fstab](broken-fstab.md)
+- [DNS failure](dns-failure.md)
+- [Package repo issue](package-repo-issue.md)
+
+## Universal First Commands
 
 ```bash
 systemctl --failed
@@ -40,8 +47,3 @@ sudo ausearch -m AVC -ts recent
 df -hT
 ```
 
-## Related
-
-- [Troubleshooting docs](../docs/15-troubleshooting.md)
-- [Hands-on labs](../labs/README.md)
-- [Interview Q&A](../interview/rhel-linux-interview-q-and-a.md)

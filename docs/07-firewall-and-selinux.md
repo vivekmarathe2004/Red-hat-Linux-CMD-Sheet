@@ -1,5 +1,11 @@
 # Firewall And SELinux
 
+## What This Means
+
+This topic is part of the daily RHEL administrator workflow. Learn what the feature controls, which files or services own it, and which command proves the current state.
+
+Use the commands as tools for evidence. A strong admin does not only run a command; they explain what the output proves and what they would check next.
+
 ## Purpose
 
 Manage host firewall rules with firewalld and enforce access control with SELinux.
@@ -61,6 +67,17 @@ ls -Z <path>
 | Service works locally but not remotely | `firewall-cmd --list-all` | Add service or port |
 | SELinux blocks service | `ausearch -m AVC -ts recent` | Fix label, boolean, or port type |
 | `semanage` missing | `command -v semanage` | Install `policycoreutils-python-utils` |
+
+## Common Mistakes
+
+- Running commands without confirming the target host, service, path, or device.
+- Changing configuration without making a quick backup first.
+- Skipping verification and assuming the command worked.
+- Treating permission, firewall, SELinux, DNS, and service failures as the same problem.
+
+## Interview Takeaway
+
+A strong answer explains the concept, names the command, and says how you would verify the output. For Firewall And SELinux, practice saying what you check first and why.
 
 ## RHEL 9 / RHEL 10 Notes
 

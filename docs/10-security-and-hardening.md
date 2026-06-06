@@ -1,5 +1,11 @@
 # Security And Hardening
 
+## What This Means
+
+This topic is part of the daily RHEL administrator workflow. Learn what the feature controls, which files or services own it, and which command proves the current state.
+
+Use the commands as tools for evidence. A strong admin does not only run a command; they explain what the output proves and what they would check next.
+
 ## Purpose
 
 Apply practical hardening for updates, authentication, auditing, crypto policy, sudo, and service exposure.
@@ -62,6 +68,17 @@ sudo visudo -c
 | Hardening broke legacy app | `update-crypto-policies --show` | Use approved compatibility policy only when required |
 | Sudo broken | `sudo visudo -c` | Fix syntax from root or rescue |
 | Service unexpectedly exposed | `ss -tulpn` | Stop, disable, or firewall service |
+
+## Common Mistakes
+
+- Running commands without confirming the target host, service, path, or device.
+- Changing configuration without making a quick backup first.
+- Skipping verification and assuming the command worked.
+- Treating permission, firewall, SELinux, DNS, and service failures as the same problem.
+
+## Interview Takeaway
+
+A strong answer explains the concept, names the command, and says how you would verify the output. For Security And Hardening, practice saying what you check first and why.
 
 ## RHEL 9 / RHEL 10 Notes
 

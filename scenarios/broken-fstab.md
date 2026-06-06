@@ -1,5 +1,11 @@
 # Scenario: Broken fstab
 
+## What This Usually Means
+
+This symptom tells you one layer of the system is not matching the expected state. Do not guess from the error message alone.
+
+Collect evidence from service state, logs, ports, firewall, SELinux, DNS, storage, and package state until the failing layer is clear.
+
 ## Symptoms
 
 - System boots into emergency mode.
@@ -13,6 +19,10 @@
 - Missing mountpoint.
 - Syntax error.
 - Disk unavailable.
+
+## Decision Flow
+
+Start broad, then narrow down. If the service is not running, read service logs. If it is running but unreachable, check listen address and firewall. If permissions look correct but access fails, check SELinux. If names fail but IPs work, check DNS.
 
 ## Diagnostic Flow
 
@@ -45,7 +55,11 @@ df -hT <mountpoint>
 systemctl --failed
 ```
 
+## What To Remember
+
+A good troubleshooting answer is not just a fix. It explains the evidence that led to the fix and the command used to verify recovery.
+
 ## Interview Answer
 
-“For fstab boot issues, I compare `/etc/fstab` with `blkid` and `lsblk`, then test with `mount -a` before rebooting.”
+"For fstab boot issues, I compare `/etc/fstab` with `blkid` and `lsblk`, then test with `mount -a` before rebooting."
 

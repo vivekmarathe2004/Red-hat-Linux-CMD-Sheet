@@ -1,49 +1,41 @@
 # Hands-On RHEL Labs
 
-Practice labs for RHEL 9 and RHEL 10 students, job-prep learners, and junior admins.
+These labs turn the command sheets into practice. Use a disposable RHEL 9 or RHEL 10 VM, because several labs change users, packages, services, storage, firewall rules, and SELinux labels.
 
-> Use a VM or disposable lab machine. Several labs change users, services, storage, firewall rules, SELinux labels, and packages.
+## How To Practice
 
-## Lab Dashboard
+For each lab:
 
-| Track | Labs |
-| --- | --- |
-| Core admin | Users, permissions, packages, systemd |
-| Platform admin | Networking, firewall, SELinux, storage |
-| Services | SSH, containers, web, database |
-| Troubleshooting | End-to-end diagnostic drill |
+1. Read the scenario.
+2. Run the commands slowly.
+3. Verify the result.
+4. Clean up when the lab asks you to.
+5. Explain the interview takeaway out loud.
 
-## Recommended Order
+## Lab Path
 
-| Order | Lab | Main Skill |
-| --- | --- | --- |
-| 1 | [Users and groups](users-and-groups.md) | Local accounts, groups, sudo |
-| 2 | [Permissions and ACLs](permissions-and-acls.md) | Unix modes, ACLs, shared dirs |
-| 3 | [Packages and repositories](packages-and-repos.md) | DNF, RPM, repos |
-| 4 | [systemd services](systemd-services.md) | Service lifecycle and logs |
-| 5 | [Networking basics](networking-basics.md) | IP, routes, DNS, NetworkManager |
-| 6 | [Firewall and SELinux](firewall-and-selinux.md) | Access control troubleshooting |
-| 7 | [Storage and LVM](storage-and-lvm.md) | Filesystems, mounts, LVM |
-| 8 | [SSH remote access](ssh-remote-access.md) | SSH keys and daemon validation |
-| 9 | [Containers with Podman](containers-podman.md) | Rootless containers |
-| 10 | [Web server](web-server.md) | Apache/Nginx basics |
-| 11 | [Database server](database-server.md) | MariaDB or PostgreSQL basics |
-| 12 | [Troubleshooting drill](troubleshooting-drill.md) | End-to-end diagnosis |
+### Core Admin Skills
 
-## Lab Format
+- [Users and groups](users-and-groups.md)
+- [Permissions and ACLs](permissions-and-acls.md)
+- [Packages and repositories](packages-and-repos.md)
+- [systemd services](systemd-services.md)
 
-Each lab includes:
+### Platform Skills
 
-- Objective
-- Requirements
-- Tasks
-- Commands
-- Verification
-- Cleanup
-- Interview takeaway
+- [Networking basics](networking-basics.md)
+- [Firewall and SELinux](firewall-and-selinux.md)
+- [Storage and LVM](storage-and-lvm.md)
+- [SSH remote access](ssh-remote-access.md)
 
-## Related
+### Service Skills
 
-- [Core docs](../docs/README.md)
-- [Troubleshooting scenarios](../scenarios/README.md)
-- [Interview Q&A](../interview/rhel-linux-interview-q-and-a.md)
+- [Containers with Podman](containers-podman.md)
+- [Web server](web-server.md)
+- [Database server](database-server.md)
+- [Troubleshooting drill](troubleshooting-drill.md)
+
+## What Good Practice Looks Like
+
+A lab is complete only when you can answer: what changed, where it is configured, how you verified it, and how you would troubleshoot it if it failed.
+

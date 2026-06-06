@@ -1,25 +1,24 @@
-# RHEL Linux Interview Questions And Answers
+# Interview Preparation
 
-This directory contains interview preparation material for Linux and Red Hat Enterprise Linux administration.
+This section helps you turn command knowledge into spoken technical answers.
 
-## Interview Prep Flow
+## How To Practice
 
-| Step | Action |
-| --- | --- |
-| 1 | Read the question and answer |
-| 2 | Practice the command in a VM |
-| 3 | Say the answer aloud in 30-60 seconds |
-| 4 | Connect it to a troubleshooting scenario |
+Read a question, say your answer out loud, then check the command in a VM. Good Linux interview answers explain both the command and the reason for using it.
+
+Use this answer pattern:
+
+```text
+First I check ...
+The command is ...
+If the output shows ...
+Then I check ...
+After fixing, I verify with ...
+```
 
 ## Pages
 
-- [Full interview Q&A](rhel-linux-interview-q-and-a.md)
+- [RHEL Linux interview questions and answers](rhel-linux-interview-q-and-a.md)
 - [Troubleshooting scenarios](../scenarios/README.md)
 - [Hands-on labs](../labs/README.md)
 
-## How To Use
-
-- Read one section at a time.
-- Practice the command behind each answer.
-- Convert short answers into spoken explanations.
-- For scenario questions, explain your troubleshooting order before giving commands.

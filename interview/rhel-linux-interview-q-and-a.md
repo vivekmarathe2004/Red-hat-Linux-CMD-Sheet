@@ -1,284 +1,311 @@
 # RHEL Linux Interview Questions And Answers
 
-## Basic Linux
+This guide is written for spoken interview practice. Do not memorize only the command. Learn to explain what you check first, why you check it, and how you verify the fix.
 
-| Question | Answer |
-| --- | --- |
-| What is Linux? | Linux is an open-source Unix-like operating system kernel. A Linux distribution combines the kernel with tools, libraries, package management, and services. |
-| What is RHEL? | Red Hat Enterprise Linux is Red Hat's enterprise Linux distribution with support, certification, lifecycle management, and enterprise tooling. |
-| How do you check the RHEL version? | Use `cat /etc/redhat-release` or `cat /etc/os-release`. |
-| How do you check the kernel version? | Use `uname -r`. |
-| What is the root user? | The administrative superuser with full control of the system. Use it carefully, usually through `sudo`. |
-| What is the difference between absolute and relative paths? | Absolute paths start from `/`; relative paths start from the current directory. |
-| What is `/etc` used for? | System and service configuration files. |
-| What is `/var` used for? | Variable data such as logs, spool files, caches, and application state. |
-| What is `/home` used for? | Regular users' home directories. |
-| What is `/boot` used for? | Kernel, initramfs, and bootloader files. |
+## Answer Format
 
-## Files And Permissions
-
-| Question | Answer |
-| --- | --- |
-| How do you view permissions? | Use `ls -l` or `stat <path>`. |
-| What do `r`, `w`, and `x` mean on files? | Read, write, and execute. |
-| What does execute mean on a directory? | It allows entering or traversing the directory. |
-| How do you change file permissions? | Use `chmod <mode> <path>`. |
-| How do you change ownership? | Use `chown <user>:<group> <path>`. |
-| What is umask? | A default permission mask applied when new files and directories are created. |
-| What is SUID? | A special bit that runs an executable with the file owner's privileges. |
-| What is SGID? | On files, it runs with group privileges; on directories, new files inherit the directory group. |
-| What is sticky bit? | On shared directories, users can delete only their own files. Common on `/tmp`. |
-| What are ACLs? | Access Control Lists provide extra permissions beyond owner, group, and others. |
-| How do you view ACLs? | Use `getfacl <path>`. |
-| How do you set an ACL? | Use `setfacl -m u:<user>:rw <path>`. |
-| How do you troubleshoot path permissions? | Use `namei -l <path>` to inspect every parent directory. |
-
-## Users, Groups, And Sudo
-
-| Question | Answer |
-| --- | --- |
-| How do you add a user? | `sudo useradd <user>` then `sudo passwd <user>`. |
-| How do you delete a user with home directory? | `sudo userdel -r <user>`. This is destructive. |
-| How do you add a user to a group? | `sudo usermod -aG <group> <user>`. |
-| Why might a new group not appear immediately? | The user needs a new login session. |
-| What file stores user accounts? | `/etc/passwd`. |
-| What file stores password hashes? | `/etc/shadow`. |
-| What file stores groups? | `/etc/group`. |
-| What is sudo? | A tool that allows permitted users to run commands as another user, usually root. |
-| How do you safely edit sudoers? | Use `sudo visudo`. |
-| How do you check sudo syntax? | `sudo visudo -c`. |
-| How do you check a user's sudo privileges? | `sudo -l -U <user>`. |
-| How do you lock an account? | `sudo usermod -L <user>`. |
-| How do you check password aging? | `sudo chage -l <user>`. |
-
-## Package Management
-
-| Question | Answer |
-| --- | --- |
-| What is RPM? | The package format and low-level package tool used on RHEL. |
-| What is DNF? | The high-level package manager that resolves dependencies and works with repositories. |
-| Difference between `rpm` and `dnf`? | `rpm` manages local packages directly; `dnf` handles repos, dependencies, and transactions. |
-| How do you install a package? | `sudo dnf install <package>`. |
-| How do you remove a package? | `sudo dnf remove <package>`. |
-| How do you search for a package? | `dnf search <term>`. |
-| How do you find which package owns a file? | `rpm -qf <path>`. |
-| How do you list files in a package? | `rpm -ql <package>`. |
-| How do you list enabled repos? | `dnf repolist` or `subscription-manager repos --list-enabled`. |
-| How do you see DNF history? | `dnf history`. |
-| Can every DNF transaction be undone? | No. Undo depends on package availability, dependencies, and transaction type. |
-
-## Subscription And Repositories
-
-| Question | Answer |
-| --- | --- |
-| What does Subscription Manager do? | Registers RHEL systems and manages entitlement and Red Hat repositories. |
-| How do you register with activation key? | `sudo subscription-manager register --org=<org> --activationkey=<key>`. |
-| How do you check subscription status? | `sudo subscription-manager status`. |
-| What are BaseOS and AppStream? | BaseOS provides core OS packages; AppStream provides applications and runtimes. |
-| Why should repo IDs not be copied between RHEL 9 and RHEL 10? | Repo IDs are version-specific. List repos on the target system. |
-| What is a release lock? | A setting that pins the system to a specific RHEL minor release. |
-
-## systemd
-
-| Question | Answer |
-| --- | --- |
-| What is systemd? | The init and service manager used by modern RHEL systems. |
-| How do you start a service? | `sudo systemctl start <service>`. |
-| How do you enable a service at boot? | `sudo systemctl enable <service>`. |
-| How do you start and enable together? | `sudo systemctl enable --now <service>`. |
-| Difference between start and enable? | `start` runs now; `enable` starts at boot. |
-| How do you check service logs? | `journalctl -u <service> -b`. |
-| How do you list failed units? | `systemctl --failed`. |
-| What is a target? | A group of units representing a system state. |
-| How do you check default target? | `systemctl get-default`. |
-| How do you change default target? | `sudo systemctl set-default <target>`. |
-| What does `daemon-reload` do? | Reloads systemd unit definitions after changes. |
-| What is masking a service? | Preventing it from starting manually or as a dependency. |
-
-## Networking
-
-| Question | Answer |
-| --- | --- |
-| How do you show IP addresses? | `ip addr`. |
-| How do you show routes? | `ip route`. |
-| What manages networking on RHEL? | NetworkManager. |
-| What is `nmcli`? | Command-line tool for NetworkManager. |
-| Difference between interface and connection profile? | Interface is hardware/device; connection profile is saved network configuration. |
-| How do you show NetworkManager connections? | `nmcli connection show`. |
-| How do you show network devices? | `nmcli device status`. |
-| How do you check DNS resolution? | `dig <name>` or `getent hosts <name>`. |
-| How do you check listening ports? | `sudo ss -tulpn`. |
-| What does `127.0.0.1:8080` in `ss` mean? | Service listens only on loopback, not remote interfaces. |
-| What does `0.0.0.0:80` mean? | Service listens on all IPv4 addresses. |
-
-## Firewall
-
-| Question | Answer |
-| --- | --- |
-| What is firewalld? | Dynamic firewall manager used on RHEL. |
-| What is a firewalld zone? | A trust level applied to network interfaces or sources. |
-| How do you list current firewall rules? | `sudo firewall-cmd --list-all`. |
-| How do you list active zones? | `sudo firewall-cmd --get-active-zones`. |
-| Difference between runtime and permanent rules? | Runtime rules apply now; permanent rules survive reload/reboot. |
-| How do you permanently open HTTP? | `sudo firewall-cmd --add-service=http --permanent && sudo firewall-cmd --reload`. |
-| How do you open a custom port? | `sudo firewall-cmd --add-port=<port>/<proto> --permanent && sudo firewall-cmd --reload`. |
-
-## SELinux
-
-| Question | Answer |
-| --- | --- |
-| What is SELinux? | Mandatory Access Control system that confines processes using policy and labels. |
-| What are SELinux modes? | Enforcing, Permissive, and Disabled. |
-| How do you check SELinux mode? | `getenforce`. |
-| What is permissive mode? | SELinux logs denials but allows access. |
-| How do you temporarily set permissive mode? | `sudo setenforce 0`. |
-| What is an SELinux context? | A security label assigned to files, processes, ports, and other objects. |
-| How do you view file contexts? | `ls -lZ <path>`. |
-| How do you restore default contexts? | `sudo restorecon -Rv <path>`. |
-| How do you create persistent file context rules? | `sudo semanage fcontext -a -t <type> "<path-regex>"`. |
-| How do you view SELinux denials? | `sudo ausearch -m AVC -ts recent`. |
-| Should SELinux be disabled? | Usually no. Fix labels, booleans, port contexts, or policies. |
-
-## Storage And LVM
-
-| Question | Answer |
-| --- | --- |
-| How do you list block devices? | `lsblk -f`. |
-| How do you show mounted filesystems? | `findmnt` or `df -hT`. |
-| What is `/etc/fstab`? | File that defines persistent mounts. |
-| How do you test `/etc/fstab`? | `sudo mount -a`. |
-| Why use UUIDs in `/etc/fstab`? | UUIDs are more stable than device names. |
-| What is LVM? | Logical Volume Manager for flexible storage management. |
-| What is a PV? | Physical Volume, usually a disk or partition used by LVM. |
-| What is a VG? | Volume Group, a pool of storage made from PVs. |
-| What is an LV? | Logical Volume, usable block device created from a VG. |
-| How do you extend an LV and filesystem? | `sudo lvextend -r -L +<size> /dev/<vg>/<lv>`. |
-| Can XFS shrink? | No. XFS can grow but cannot shrink. |
-
-## Logs And Troubleshooting
-
-| Question | Answer |
-| --- | --- |
-| How do you view current boot logs? | `journalctl -b`. |
-| How do you view previous boot logs? | `journalctl -b -1`. |
-| How do you view errors from current boot? | `journalctl -p err -b`. |
-| Where are authentication logs? | `/var/log/secure` and journald. |
-| Where are SELinux audit logs? | `/var/log/audit/audit.log`. |
-| How do you find a high CPU process? | `top` or `ps -eo pid,cmd,%cpu --sort=-%cpu`. |
-| How do you check memory? | `free -h`. |
-| How do you check disk usage? | `df -hT` and `du -sh <path>`. |
-| How do you find which process uses a port? | `sudo ss -tulpn | grep <port>`. |
-
-## SSH
-
-| Question | Answer |
-| --- | --- |
-| How do you connect to a remote server? | `ssh <user>@<host>`. |
-| How do you create an SSH key? | `ssh-keygen -t ed25519`. |
-| How do you copy a public key? | `ssh-copy-id <user>@<host>`. |
-| Where are authorized keys stored? | `~/.ssh/authorized_keys`. |
-| How do you validate SSH server config? | `sudo sshd -t`. |
-| Why disable root SSH login? | Reduces attack risk and improves accountability. |
-| What should you do before restarting SSH remotely? | Keep an existing session open and run `sshd -t`. |
-
-## Containers
-
-| Question | Answer |
-| --- | --- |
-| What is Podman? | A daemonless container engine used on RHEL. |
-| What is rootless Podman? | Running containers without root privileges. |
-| What is Buildah? | Tool for building container images. |
-| What is Skopeo? | Tool for inspecting and copying container images without running them. |
-| How do you list containers? | `podman ps -a`. |
-| How do you view container logs? | `podman logs <container>`. |
-| How do you run a container in background? | `podman run -d --name <name> <image>`. |
-| How do you map ports? | `podman run -p <hostport>:<containerport> <image>`. |
-
-## Web And Database Services
-
-| Question | Answer |
-| --- | --- |
-| How do you validate Apache config? | `sudo apachectl configtest`. |
-| Apache service name on RHEL? | `httpd`. |
-| How do you validate Nginx config? | `sudo nginx -t`. |
-| What causes Nginx 502 errors? | Backend service down, wrong proxy address, SELinux, firewall, or timeout. |
-| How do you initialize PostgreSQL? | `sudo postgresql-setup --initdb`. |
-| Which PostgreSQL file controls client authentication? | `pg_hba.conf`. |
-| How do you secure MariaDB initially? | `sudo mariadb-secure-installation`. |
-| What should be checked before exposing a database remotely? | Bind address, auth rules, firewall, SELinux, strong passwords, and network restrictions. |
-
-## Scenario-Based Interview Questions
-
-| Scenario | Strong Answer |
-| --- | --- |
-| Website works locally but not remotely. | Check service status, listen address, firewall, SELinux, routing, DNS, and external network ACLs. Commands: `systemctl status`, `ss -tulpn`, `firewall-cmd --list-all`, `getenforce`, `ausearch`. |
-| User cannot sudo after being added to wheel. | Confirm group membership with `id`, ask user to re-login, check sudoers with `visudo -c`, and verify with `sudo -l -U <user>`. |
-| Server boots into emergency mode after storage change. | Suspect `/etc/fstab`. Check UUIDs with `blkid`, fix bad entries, test with `mount -a`. |
-| Service fails after config edit. | Run service-specific validation, check `journalctl -u <service> -b`, restore backup if needed, then reload/restart. |
-| SELinux blocks a web directory. | Check AVC denials and labels, add proper file context with `semanage fcontext`, then `restorecon`. |
-| Package install says no match found. | Check enabled repos, subscription status, package name, architecture, release lock, and AppStream availability. |
-| Disk is full. | Use `df -hT`, `du -xhd1 /`, check logs/cache, identify growth source, and extend storage if needed. |
-| Port is already in use. | Use `ss -tulpn | grep <port>` to find the process, then stop, reconfigure, or change the conflicting service. |
-
-## What Would You Check First?
-
-| Question | Strong Spoken Answer |
-| --- | --- |
-| A service is down. What do you check first? | “I check `systemctl status <service>` first because it shows whether the service is active, failed, or disabled. Then I read `journalctl -u <service> -b` for the exact failure.” |
-| A server is slow. What do you check first? | “I check load, CPU, memory, disk, and logs using `uptime`, `top`, `free -h`, `df -hT`, and `journalctl -p err -b`.” |
-| A user cannot log in. What do you check first? | “I check whether the account exists and is unlocked with `id`, `getent passwd`, `passwd -S`, then I check `/var/log/secure`.” |
-| A mount does not work after reboot. What do you check first? | “I compare `/etc/fstab` with `blkid` and `lsblk -f`, then run `mount -a` to reproduce the error safely.” |
-| A website returns 403. What do you check first? | “I check file permissions, parent directory permissions with `namei -l`, SELinux labels with `ls -Z`, and web error logs.” |
-| A website returns 502. What do you check first? | “I check whether the backend is running and listening, then verify the proxy target, firewall, SELinux, and web error logs.” |
-| DNF cannot find a package. What do you check first? | “I check subscription status, enabled repos, release lock, package name, and metadata with `dnf repolist` and `dnf makecache`.” |
-| SSH is not working. What do you check first? | “I check `sshd` status, validate config with `sshd -t`, confirm port 22 is listening, check firewall, then read `/var/log/secure`.” |
-
-## Command Explanation Questions
-
-| Command | What To Say |
-| --- | --- |
-| `systemctl status <service>` | Shows service state, recent logs, PID, and whether systemd considers the unit healthy. |
-| `journalctl -u <service> -b` | Shows logs for one service from the current boot. |
-| `ss -tulpn` | Shows listening TCP/UDP sockets and the processes using them. |
-| `firewall-cmd --list-all` | Shows allowed services and ports in the active firewalld zone. |
-| `getenforce` | Shows the current SELinux mode. |
-| `ausearch -m AVC -ts recent` | Finds recent SELinux access denials. |
-| `lsblk -f` | Shows block devices, filesystems, labels, and UUIDs. |
-| `df -hT` | Shows mounted filesystem usage and filesystem type. |
-| `rpm -qf <path>` | Shows which installed package owns a file. |
-| `dnf history` | Shows package transaction history. |
-| `namei -l <path>` | Shows permissions for every directory in a path. |
-| `mount -a` | Tests all mount entries in `/etc/fstab`. |
-
-## Short HR-Style Technical Answers
-
-| Question | Answer |
-| --- | --- |
-| How do you work safely on production? | “I check current state, back up configs, make one change at a time, validate, reload instead of restart when possible, and verify from logs and clients.” |
-| What do you do when you do not know a command? | “I use `man`, `--help`, package docs, and test in a lab before using it on production.” |
-| How do you document a fix? | “I record the symptom, root cause, commands used, files changed, verification, and rollback notes.” |
-| How do you avoid repeating incidents? | “I identify the root cause, add monitoring or checks, document the fix, and automate safe validation where possible.” |
-| What makes a good Linux admin? | “Careful troubleshooting, strong fundamentals, respect for production risk, and clear documentation.” |
-
-## Practice Scenarios To Rehearse
-
-- Service failed after config edit.
-- SSH inaccessible after hardening.
-- Apache 403 after moving document root.
-- Nginx 502 to backend app.
-- Disk full under `/var`.
-- Broken `/etc/fstab`.
-- Package missing because repo disabled.
-- DNS fails but IP connectivity works.
-- SELinux blocks custom service path.
-- Firewall allows wrong zone.
-
-For each scenario, practice this answer format:
+Use this pattern for scenario answers:
 
 ```text
-First I check ...
-The command is ...
+First I check the current state.
+The command I use is ...
 If the output shows ...
 Then I check ...
 After fixing, I verify with ...
 ```
+
+## Core Linux Basics
+
+### How do you check the RHEL version?
+
+Use:
+
+```bash
+cat /etc/redhat-release
+cat /etc/os-release
+```
+
+Short answer: "`/etc/redhat-release` gives the simple RHEL release, and `/etc/os-release` gives structured OS information useful for scripts."
+
+### How do you check the running kernel?
+
+```bash
+uname -r
+```
+
+Short answer: "`uname -r` shows the kernel currently running. It may differ from the newest installed kernel if the system has not rebooted."
+
+### What is the difference between `/tmp` and `/var/tmp`?
+
+`/tmp` is for short-lived temporary files. `/var/tmp` is usually preserved longer across reboots. Applications should not store important permanent data in either location.
+
+### What is the root user?
+
+The root user is the superuser. It can change almost anything on the system, so daily administration should normally use `sudo` for accountability and safer control.
+
+## Files And Permissions
+
+### How do you troubleshoot a permission denied error?
+
+Start with the full path, not only the final file:
+
+```bash
+namei -l <path>
+ls -l <path>
+getfacl <path>
+ls -lZ <path>
+```
+
+Spoken answer: "I check every parent directory with `namei -l`, then normal permissions, ACLs, and SELinux context."
+
+### What does execute permission mean on a directory?
+
+Execute on a directory means the user can enter or traverse it. A file may look readable, but access can still fail if a parent directory lacks execute permission.
+
+### What are SUID, SGID, and sticky bit?
+
+- SUID runs an executable with the file owner's privileges.
+- SGID runs with group privileges on files and makes new files inherit the directory group on directories.
+- Sticky bit on shared directories lets users delete only their own files.
+
+### What are ACLs?
+
+ACLs add permissions beyond owner, group, and others.
+
+```bash
+getfacl <path>
+setfacl -m u:<user>:rw <path>
+```
+
+## Users, Groups, And Sudo
+
+### How do you add a user and give sudo access?
+
+```bash
+sudo useradd <user>
+sudo passwd <user>
+sudo usermod -aG wheel <user>
+sudo -l -U <user>
+```
+
+Spoken answer: "I add the user, set a password, add them to `wheel`, then verify sudo privileges with `sudo -l -U`."
+
+### Why might new group membership not work immediately?
+
+The user usually needs a new login session. Existing shells keep the old group list.
+
+### Why use `visudo`?
+
+`visudo` validates sudoers syntax before saving. A syntax error in sudoers can lock admins out of privilege escalation.
+
+## Package Management
+
+### What is the difference between `dnf` and `rpm`?
+
+`dnf` works with repositories and resolves dependencies. `rpm` queries or installs individual RPM packages directly.
+
+Use `dnf` for normal installs:
+
+```bash
+sudo dnf install <package>
+```
+
+Use `rpm` to inspect installed package ownership:
+
+```bash
+rpm -qf <path>
+rpm -ql <package>
+```
+
+### A package is not found. What do you check first?
+
+Check registration, enabled repositories, release lock, DNS/proxy, and package name:
+
+```bash
+sudo subscription-manager status
+sudo subscription-manager repos --list-enabled
+sudo subscription-manager release --show
+dnf repolist --all
+sudo dnf makecache
+dnf info <package>
+```
+
+## systemd
+
+### What is the difference between `start` and `enable`?
+
+`start` runs a service now. `enable` configures it to start at boot.
+
+```bash
+sudo systemctl start <service>
+sudo systemctl enable <service>
+sudo systemctl enable --now <service>
+```
+
+### A service is down. What do you check first?
+
+```bash
+systemctl status <service>
+journalctl -u <service> -b --no-pager
+systemctl cat <service>
+```
+
+Spoken answer: "I check service state first, then current boot logs. If config changed, I validate the config and reload or restart only after fixing errors."
+
+### What does `systemctl daemon-reload` do?
+
+It tells systemd to reload unit definitions after unit files or overrides change. It does not restart the service by itself.
+
+## Networking
+
+### How do you separate network problems?
+
+Check each layer separately:
+
+```bash
+ip addr
+ip route
+nmcli device status
+getent hosts <hostname>
+dig <hostname>
+sudo ss -tulpn
+```
+
+Spoken answer: "I separate IP address, routing, DNS, listening port, firewall, and SELinux instead of calling everything a network problem."
+
+### What does `127.0.0.1:<port>` mean in `ss` output?
+
+The service is listening only on loopback. Remote clients cannot connect directly to that address.
+
+### What does `0.0.0.0:<port>` mean?
+
+The service is listening on all IPv4 interfaces.
+
+## Firewall And SELinux
+
+### How do you open HTTP permanently?
+
+```bash
+sudo firewall-cmd --add-service=http --permanent
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-all
+```
+
+### What is the difference between firewalld and SELinux?
+
+Firewalld controls network traffic entering the host. SELinux controls what processes can do once they are running.
+
+### How do you troubleshoot SELinux?
+
+```bash
+getenforce
+ls -lZ <path>
+ps -eZ | grep <process>
+sudo ausearch -m AVC -ts recent
+getsebool -a | grep <service>
+```
+
+Spoken answer: "I do not disable SELinux as the fix. I use AVC denials to decide whether I need a label, boolean, port type, or policy change."
+
+## Storage And LVM
+
+### What are PV, VG, and LV?
+
+Physical volumes are disks or partitions used by LVM. Volume groups pool that storage. Logical volumes are the usable block devices created from the pool.
+
+### How do you test `/etc/fstab` safely?
+
+```bash
+sudo cp -a /etc/fstab /etc/fstab.bak.$(date +%F-%H%M)
+sudo mount -a
+findmnt <mountpoint>
+```
+
+Spoken answer: "I back up `fstab`, compare UUIDs with `blkid`, then run `mount -a` before rebooting."
+
+### Can XFS shrink?
+
+No. XFS can grow, often online, but it cannot shrink.
+
+## SSH
+
+### How do you avoid SSH lockout?
+
+Keep an existing session open and validate the daemon config before restart:
+
+```bash
+sudo sshd -t
+sudo systemctl restart sshd
+sudo journalctl -u sshd -b --no-pager
+```
+
+Also check firewall and port state:
+
+```bash
+sudo ss -tulpn | grep ':22'
+sudo firewall-cmd --list-all
+```
+
+## Containers
+
+### What is Podman?
+
+Podman is a daemonless container engine commonly used on RHEL. It supports rootless containers, which allows users to run containers without full root privileges.
+
+Useful commands:
+
+```bash
+podman pull <image>
+podman run -d --name <name> <image>
+podman ps -a
+podman logs <name>
+podman exec -it <name> /bin/bash
+```
+
+## Web And Database Scenarios
+
+### Apache returns 403. What do you check?
+
+Check Unix permissions, parent directories, SELinux labels, and web logs:
+
+```bash
+namei -l <docroot>
+ls -lZ <docroot>
+sudo ausearch -m AVC -ts recent
+sudo tail -f /var/log/httpd/error_log
+```
+
+### Nginx returns 502. What do you check?
+
+Check whether the backend is running and reachable:
+
+```bash
+systemctl status <backend-service>
+sudo ss -tulpn
+curl http://127.0.0.1:<backend-port>
+sudo nginx -t
+```
+
+Also check SELinux if Nginx or Apache proxies to a network backend.
+
+## Quick Scenario Practice
+
+### Service works locally but not remotely
+
+Answer: "I check the listen address with `ss -tulpn`, then firewalld, routing, DNS, and external network controls."
+
+### Disk is full
+
+Answer: "I check `df -hT` and `df -ih`, identify large directories with `du`, clean safely, and extend storage if needed."
+
+### DNS fails but IP works
+
+Answer: "I verify routing first, then resolver settings, then direct DNS queries with `dig @<dns-server>`."
+
+### Broken boot after storage change
+
+Answer: "I suspect `/etc/fstab`, compare it with `blkid` and `lsblk -f`, fix the bad entry, then test with `mount -a`."
+
+## Final Interview Advice
+
+The strongest answer is calm and ordered. Say what you check first, show the command, explain the expected output, and finish with how you verify recovery.

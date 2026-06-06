@@ -1,5 +1,11 @@
 # FTP With vsftpd
 
+## How This Service Fits
+
+A service is not just a package. A working deployment usually needs a valid config file, a running systemd unit, a listening port, firewall access for remote clients, and SELinux policy that matches the service behavior.
+
+Deploy in small steps: install, configure, validate, start, open access, test locally, test remotely, then review logs.
+
 ## Purpose
 
 Install a basic FTP service with vsftpd where FTP is explicitly required.
@@ -49,6 +55,13 @@ systemctl status vsftpd
 sudo ss -tulpn | grep ':21'
 ftp <server>
 ```
+
+## Common Service Mistakes
+
+- Opening a firewall port before confirming the service is listening.
+- Restarting a service before validating the config file.
+- Forgetting SELinux labels or booleans for custom paths and proxy behavior.
+- Testing only from localhost when the real users connect remotely.
 
 ## Troubleshooting
 

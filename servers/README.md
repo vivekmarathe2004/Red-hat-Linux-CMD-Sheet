@@ -1,49 +1,49 @@
 # Server Recipes
 
-Practical setup recipes for common RHEL server roles.
+These pages show how to deploy common RHEL server roles safely. Each recipe explains what the service does, which files matter, how to configure it, how to verify it, and how to troubleshoot it.
 
-Each recipe follows the same general pattern: install, configure, enable, firewall or SELinux notes, verify, and troubleshoot.
+## Deployment Mindset
 
-## Server Dashboard
+Before exposing any service, answer:
 
-| Category | Recipes |
-| --- | --- |
-| Web | Apache HTTPD, Nginx |
-| Databases | MariaDB/MySQL, PostgreSQL |
-| Network services | DNS, DHCP, Chrony |
-| File sharing | NFS, Samba, FTP |
-| Operations | Postfix, Rsyslog, Cockpit, IdM overview |
+- Is the service installed and enabled?
+- Is it listening on the expected address and port?
+- Is firewalld allowing the traffic?
+- Is SELinux allowing the service behavior?
+- Do logs show a clean startup?
 
-## Web
+## Recipes
+
+### Web
 
 - [Apache HTTPD](apache-httpd.md)
 - [Nginx](nginx.md)
 
-## Databases
+### Databases
 
 - [MariaDB / MySQL](mariadb-mysql.md)
 - [PostgreSQL](postgresql.md)
 
-## Network Services
+### Network Services
 
 - [DNS with BIND](dns-bind.md)
 - [DHCP](dhcp.md)
 - [Chrony / NTP](chrony-ntp.md)
 
-## File Sharing
+### File Sharing
 
 - [NFS](nfs.md)
 - [Samba](samba.md)
 - [FTP with vsftpd](ftp-vsftpd.md)
 
-## Operations
+### Operations
 
 - [Mail with Postfix](mail-postfix.md)
 - [Rsyslog](rsyslog.md)
 - [Cockpit](cockpit.md)
 - [IdM / FreeIPA overview](idm-freeipa-overview.md)
 
-## Before Exposing A Service
+## Standard Verification
 
 ```bash
 systemctl status <service>
@@ -53,9 +53,3 @@ getenforce
 sudo ausearch -m AVC -ts recent
 ```
 
-## Related Practice
-
-- [Web server lab](../labs/web-server.md)
-- [Database server lab](../labs/database-server.md)
-- [Service down scenario](../scenarios/service-down.md)
-- [Web 403 or 502 scenario](../scenarios/web-403-502.md)

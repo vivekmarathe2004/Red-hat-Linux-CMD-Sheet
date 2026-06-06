@@ -1,5 +1,11 @@
 # Scenario: SSH Lockout
 
+## What This Usually Means
+
+This symptom tells you one layer of the system is not matching the expected state. Do not guess from the error message alone.
+
+Collect evidence from service state, logs, ports, firewall, SELinux, DNS, storage, and package state until the failing layer is clear.
+
 ## Symptoms
 
 - SSH login fails after config or firewall changes.
@@ -14,6 +20,10 @@
 - User account locked.
 - Key permissions wrong.
 - PAM or SELinux issue.
+
+## Decision Flow
+
+Start broad, then narrow down. If the service is not running, read service logs. If it is running but unreachable, check listen address and firewall. If permissions look correct but access fails, check SELinux. If names fail but IPs work, check DNS.
 
 ## Diagnostic Flow
 
@@ -49,7 +59,11 @@ ssh -v <user>@<host>
 systemctl status sshd
 ```
 
+## What To Remember
+
+A good troubleshooting answer is not just a fix. It explains the evidence that led to the fix and the command used to verify recovery.
+
 ## Interview Answer
 
-“I never restart SSH blindly on a remote server. I keep a working session open, validate with `sshd -t`, check firewall and logs, then restart.”
+"I never restart SSH blindly on a remote server. I keep a working session open, validate with `sshd -t`, check firewall and logs, then restart."
 

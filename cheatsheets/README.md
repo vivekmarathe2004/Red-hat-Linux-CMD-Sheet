@@ -1,31 +1,20 @@
 # Cheatsheets
 
-Fast lookup references for common RHEL administration work.
+Cheatsheets are intentionally compact. Use them after you understand the concept and need a fast lookup.
 
-## Quick Navigation
+## How To Use This Section
 
-| Need | Open |
-| --- | --- |
-| Commands | [Command index](command-index.md) |
-| Paths | [File paths](file-paths.md) |
-| Ports | [Ports and services](ports-and-services.md) |
-| Config validation | [Configuration files](config-files.md) |
-| Version reminders | [RHEL 9 vs RHEL 10 notes](rhel9-vs-rhel10-notes.md) |
+If you are new to a topic, read the matching tutorial page in [docs](../docs/README.md) first. Then come back here to memorize commands, paths, ports, and config checks.
 
-## Pages
+## Quick Lookup
 
-| File | Use It For |
-| --- | --- |
-| [Command index](command-index.md) | Fast command lookup by topic |
-| [File paths](file-paths.md) | Common system and service paths |
-| [Ports and services](ports-and-services.md) | Packages, services, ports, and firewall names |
-| [Configuration files](config-files.md) | Main config files and validation commands |
-| [RHEL 9 vs RHEL 10 notes](rhel9-vs-rhel10-notes.md) | Version-specific reminders |
+- [Command index](command-index.md): commands grouped by admin task.
+- [File paths](file-paths.md): important system and service paths.
+- [Ports and services](ports-and-services.md): service names, ports, packages, and firewall names.
+- [Configuration files](config-files.md): config files and validation commands.
+- [RHEL 9 vs RHEL 10 notes](rhel9-vs-rhel10-notes.md): version reminders.
 
-## Related
+## Best Practice
 
-- [Core administration docs](../docs/README.md)
-- [Server recipes](../servers/README.md)
-- [Hands-on labs](../labs/README.md)
-- [Troubleshooting scenarios](../scenarios/README.md)
-- [General notes](../notes/general-notes.md)
+Do not copy a command only because it appears in a cheatsheet. Read the note beside it, replace placeholders, and verify the result.
+

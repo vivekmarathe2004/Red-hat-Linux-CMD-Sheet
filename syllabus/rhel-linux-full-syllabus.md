@@ -1,8 +1,16 @@
 # RHEL 9/10 Full Study Syllabus
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 This syllabus organizes the repository into a complete learning path for Red Hat Enterprise Linux administration. It is written for practical admin learning, interview preparation, and RHCSA/RHCE-style revision.
 
 ## How To Study
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 1. Read the objective.
 2. Practice the commands in a VM.
@@ -11,6 +19,10 @@ This syllabus organizes the repository into a complete learning path for Red Hat
 5. Write your own notes after every lab.
 
 ## Job-Prep Learning Path
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 | Phase | Focus | Output |
 | --- | --- | --- |
@@ -22,12 +34,20 @@ This syllabus organizes the repository into a complete learning path for Red Hat
 
 ## Practice Resources
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - [Hands-on labs](../labs/README.md)
 - [Troubleshooting scenarios](../scenarios/README.md)
 - [Interview questions and answers](../interview/rhel-linux-interview-q-and-a.md)
 - [General revision notes](../notes/general-notes.md)
 
 ## What To Prove Before Interviews
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - You can explain `systemctl status`, `journalctl`, `ss`, `firewall-cmd`, `getenforce`, `ausearch`, `lsblk`, `df`, `dnf`, and `rpm`.
 - You can separate service, network, firewall, SELinux, DNS, permission, package, and storage problems.
@@ -37,13 +57,25 @@ This syllabus organizes the repository into a complete learning path for Red Hat
 
 ## Module 01: Linux Fundamentals
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Understand shell basics, command syntax, files, directories, paths, and help systems.
 - Navigate the filesystem confidently.
 - Use manual pages and package documentation.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Linux directory structure.
 - Absolute and relative paths.
@@ -54,6 +86,10 @@ This syllabus organizes the repository into a complete learning path for Red Hat
 - Manual pages and documentation.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 pwd
@@ -73,15 +109,27 @@ history
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Navigate from `/` to `/etc`, `/var/log`, `/home`, and `/tmp`.
 - Use `man`, `--help`, and package docs to understand a command.
 - Create a small command pipeline using `grep`, `sort`, and `uniq`.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can move around the filesystem, read help, inspect files, and build simple shell command pipelines.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain absolute vs relative path.
 - Explain why `/etc`, `/var`, `/home`, `/tmp`, and `/boot` matter.
@@ -89,17 +137,33 @@ You can move around the filesystem, read help, inspect files, and build simple s
 
 ### Must Explain In Interview
 
-“I use `man`, `--help`, and package documentation first, then test commands safely in a lab before using them on production systems.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"I use `man`, `--help`, and package documentation first, then test commands safely in a lab before using them on production systems."
 
 ## Module 02: Installation, Subscription, And Repositories
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Register RHEL systems.
 - Enable correct RHEL 9 or RHEL 10 repositories.
 - Understand BaseOS, AppStream, and package lifecycle basics.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - RHEL installation overview.
 - Subscription Manager.
@@ -109,6 +173,10 @@ You can move around the filesystem, read help, inspect files, and build simple s
 - Package transactions.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 sudo subscription-manager register --org=<org> --activationkey=<key>
@@ -124,6 +192,10 @@ dnf history
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Register a lab VM.
 - Enable BaseOS and AppStream.
 - Install and remove a test package.
@@ -131,9 +203,17 @@ dnf history
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can register a RHEL system, identify enabled repositories, and understand why RHEL 9 and RHEL 10 repo IDs differ.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain BaseOS vs AppStream.
 - Explain what `subscription-manager status` proves.
@@ -141,16 +221,32 @@ You can register a RHEL system, identify enabled repositories, and understand wh
 
 ### Must Explain In Interview
 
-“If a package is not found, I check registration, enabled repos, release lock, DNS/proxy, and package name.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"If a package is not found, I check registration, enabled repos, release lock, DNS/proxy, and package name."
 
 ## Module 03: Package Management
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Install, update, remove, query, and troubleshoot RPM packages.
 - Understand the difference between `rpm` and `dnf`.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - RPM database.
 - Package dependencies.
@@ -159,6 +255,10 @@ You can register a RHEL system, identify enabled repositories, and understand wh
 - Transaction rollback limitations.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 sudo dnf install <package>
@@ -175,15 +275,27 @@ sudo dnf history undo <id>
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Find which package provides a command.
 - List files installed by a package.
 - Identify which package owns `/etc/ssh/sshd_config`.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can install packages with dependency resolution and use RPM queries to inspect installed files.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain `dnf` vs `rpm`.
 - Explain `rpm -qf`.
@@ -191,16 +303,32 @@ You can install packages with dependency resolution and use RPM queries to inspe
 
 ### Must Explain In Interview
 
-“I use `dnf` for repo-based package operations and `rpm` for direct package database queries.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"I use `dnf` for repo-based package operations and `rpm` for direct package database queries."
 
 ## Module 04: Files, Permissions, And ACLs
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Manage files, directories, ownership, permissions, umask, and ACLs.
 - Diagnose permission problems across a full path.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - File ownership.
 - Permission bits.
@@ -210,6 +338,10 @@ You can install packages with dependency resolution and use RPM queries to inspe
 - File attributes.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 touch <file>
@@ -229,15 +361,27 @@ chattr +i <path>
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Create a shared directory using SGID.
 - Add ACL access for one user.
 - Troubleshoot a permission denied error with `namei -l`.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can design simple shared directory access and diagnose permission failures across parent directories.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain read/write/execute on files vs directories.
 - Explain SUID, SGID, sticky bit.
@@ -245,17 +389,33 @@ You can design simple shared directory access and diagnose permission failures a
 
 ### Must Explain In Interview
 
-“When access fails, I check every parent directory with `namei -l`, then ownership, mode, ACLs, and SELinux labels.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"When access fails, I check every parent directory with `namei -l`, then ownership, mode, ACLs, and SELinux labels."
 
 ## Module 05: Users, Groups, And Sudo
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Create and manage local users and groups.
 - Configure sudo safely.
 - Understand account locking, password aging, and login shells.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - `/etc/passwd`, `/etc/shadow`, `/etc/group`.
 - UID and GID.
@@ -265,6 +425,10 @@ You can design simple shared directory access and diagnose permission failures a
 - Account lock and unlock.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 sudo useradd <user>
@@ -284,15 +448,27 @@ sudo -l -U <user>
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Create an admin user with sudo access.
 - Create a locked service account.
 - Configure a sudo drop-in file under `/etc/sudoers.d/`.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can manage local identities, sudo access, and basic account security.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain UID, GID, primary group, supplementary groups.
 - Explain why group changes require a new login session.
@@ -300,15 +476,31 @@ You can manage local identities, sudo access, and basic account security.
 
 ### Must Explain In Interview
 
-“I validate sudoers syntax with `visudo -c` and confirm user access with `sudo -l -U <user>`.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"I validate sudoers syntax with `visudo -c` and confirm user access with `sudo -l -U <user>`."
 
 ## Module 06: systemd And Boot
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Manage services, targets, unit files, overrides, and boot troubleshooting.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Units and unit types.
 - Service states.
@@ -319,6 +511,10 @@ You can manage local identities, sudo access, and basic account security.
 - Unit overrides.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 systemctl status <service>
@@ -339,15 +535,27 @@ journalctl -u <service> -b
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Enable and disable a service.
 - Create a systemd override.
 - Troubleshoot a failed service from logs.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can control services, inspect unit files, manage boot startup, and read logs for failed services.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain `start` vs `enable`.
 - Explain `restart` vs `reload`.
@@ -355,15 +563,31 @@ You can control services, inspect unit files, manage boot startup, and read logs
 
 ### Must Explain In Interview
 
-“For a failed service, I check `systemctl status`, then `journalctl -u <service> -b`, validate config, and inspect ports/SELinux if needed.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"For a failed service, I check `systemctl status`, then `journalctl -u <service> -b`, validate config, and inspect ports/SELinux if needed."
 
 ## Module 07: Networking
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Configure hostnames, IP addresses, DNS, routes, and NetworkManager profiles.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Interface naming.
 - IP addressing.
@@ -374,6 +598,10 @@ You can control services, inspect unit files, manage boot startup, and read logs
 - Name resolution troubleshooting.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 ip addr
@@ -394,15 +622,27 @@ tracepath <host>
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Set a static IP using `nmcli`.
 - Configure DNS servers.
 - Troubleshoot a service listening only on `127.0.0.1`.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can inspect network state and distinguish address, route, DNS, and listening-port issues.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain interface vs NetworkManager connection profile.
 - Explain `127.0.0.1` vs `0.0.0.0` listening.
@@ -410,16 +650,32 @@ You can inspect network state and distinguish address, route, DNS, and listening
 
 ### Must Explain In Interview
 
-“I separate connectivity from name resolution: first IP and route, then DNS, then service and firewall.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"I separate connectivity from name resolution: first IP and route, then DNS, then service and firewall."
 
 ## Module 08: Firewall And SELinux
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Manage network access with firewalld.
 - Diagnose and fix SELinux access denials properly.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Firewalld zones.
 - Services and ports.
@@ -431,6 +687,10 @@ You can inspect network state and distinguish address, route, DNS, and listening
 - AVC denials.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 sudo firewall-cmd --state
@@ -453,15 +713,27 @@ sudo ausearch -m AVC -ts recent
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Open HTTP permanently.
 - Move web content to `/srv/www` and fix SELinux labels.
 - Add an SELinux port mapping for a non-standard service port.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can open services safely and fix common SELinux label, boolean, and port-context issues.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain runtime vs permanent firewalld rules.
 - Explain SELinux enforcing vs permissive.
@@ -469,15 +741,31 @@ You can open services safely and fix common SELinux label, boolean, and port-con
 
 ### Must Explain In Interview
 
-“I do not disable SELinux as a fix; I use AVC logs to identify the correct label, boolean, or port type.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"I do not disable SELinux as a fix; I use AVC logs to identify the correct label, boolean, or port type."
 
 ## Module 09: Storage, Filesystems, And LVM
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Partition disks, create filesystems, configure persistent mounts, and manage LVM.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Block devices.
 - Filesystems.
@@ -488,6 +776,10 @@ You can open services safely and fix common SELinux label, boolean, and port-con
 - Swap.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 lsblk -f
@@ -509,6 +801,10 @@ sudo lvextend -r -L +<size> /dev/<vg>/<lv>
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Create an LVM logical volume.
 - Format it with XFS.
 - Mount it persistently using UUID.
@@ -516,9 +812,17 @@ sudo lvextend -r -L +<size> /dev/<vg>/<lv>
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can safely create and grow lab storage using LVM and persistent mounts.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain PV, VG, LV.
 - Explain why UUIDs are used in `/etc/fstab`.
@@ -526,15 +830,31 @@ You can safely create and grow lab storage using LVM and persistent mounts.
 
 ### Must Explain In Interview
 
-“Before storage changes, I confirm the target disk with `lsblk -f` and back up `/etc/fstab` before editing persistent mounts.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"Before storage changes, I confirm the target disk with `lsblk -f` and back up `/etc/fstab` before editing persistent mounts."
 
 ## Module 10: Logs, Monitoring, And Performance
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Read logs, inspect processes, identify resource issues, and collect diagnostics.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Journald.
 - Classic logs.
@@ -544,6 +864,10 @@ You can safely create and grow lab storage using LVM and persistent mounts.
 - Socket inspection.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 ps aux
@@ -563,15 +887,27 @@ sudo sos report
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Identify a high CPU process.
 - Find which process is using a port.
 - Generate a diagnostic report.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can collect useful system evidence before making changes.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain journald vs classic logs.
 - Explain `ss -tulpn`.
@@ -579,16 +915,32 @@ You can collect useful system evidence before making changes.
 
 ### Must Explain In Interview
 
-“I gather logs, process state, ports, disk, and memory information before changing a running production service.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"I gather logs, process state, ports, disk, and memory information before changing a running production service."
 
 ## Module 11: SSH And Remote Access
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Configure SSH safely for administration.
 - Use keys and troubleshoot login failures.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - SSH server and client.
 - Key-based login.
@@ -598,6 +950,10 @@ You can collect useful system evidence before making changes.
 - Remote copy tools.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 ssh <user>@<host>
@@ -612,15 +968,27 @@ sudo journalctl -u sshd -b
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Configure key-based SSH login.
 - Disable password login in a lab.
 - Troubleshoot failed SSH login using logs.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can configure SSH safely and avoid remote lockout.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain `authorized_keys`.
 - Explain key permissions.
@@ -628,15 +996,31 @@ You can configure SSH safely and avoid remote lockout.
 
 ### Must Explain In Interview
 
-“Before restarting SSH remotely, I keep an existing session open and validate config with `sshd -t`.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"Before restarting SSH remotely, I keep an existing session open and validate config with `sshd -t`."
 
 ## Module 12: Shell Scripting And Automation
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Write safe shell scripts and automate tasks with cron or systemd timers.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Variables.
 - Exit codes.
@@ -647,6 +1031,10 @@ You can configure SSH safely and avoid remote lockout.
 - systemd timers.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 bash -n <script>
@@ -660,15 +1048,27 @@ logger "message"
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Write a script that checks disk usage.
 - Schedule it with cron.
 - Log output using `logger`.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can write small admin scripts and schedule them safely.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain exit codes.
 - Explain why scripts should use absolute paths in cron.
@@ -676,15 +1076,31 @@ You can write small admin scripts and schedule them safely.
 
 ### Must Explain In Interview
 
-“Cron jobs have a limited environment, so I set `PATH` or use absolute command paths.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"Cron jobs have a limited environment, so I set `PATH` or use absolute command paths."
 
 ## Module 13: Containers
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Use Podman, Buildah, and Skopeo for container operations.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Rootless containers.
 - Images and containers.
@@ -695,6 +1111,10 @@ You can write small admin scripts and schedule them safely.
 - systemd integration.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 podman pull <image>
@@ -710,15 +1130,27 @@ skopeo inspect docker://<image>
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Run a rootless web container.
 - Expose a port.
 - Generate a systemd unit for a container.
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can run and inspect containers using the RHEL-native Podman toolset.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain rootless Podman.
 - Explain image vs container.
@@ -726,15 +1158,31 @@ You can run and inspect containers using the RHEL-native Podman toolset.
 
 ### Must Explain In Interview
 
-“Podman is daemonless and supports rootless containers, which helps reduce privilege exposure.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"Podman is daemonless and supports rootless containers, which helps reduce privilege exposure."
 
 ## Module 14: Web, Database, And Infrastructure Services
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Install and troubleshoot common RHEL server roles.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Apache.
 - Nginx.
@@ -751,6 +1199,10 @@ You can run and inspect containers using the RHEL-native Podman toolset.
 
 ### Must Know Checks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ```bash
 systemctl status <service>
 journalctl -u <service> -b
@@ -762,6 +1214,10 @@ sudo ausearch -m AVC -ts recent
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Deploy Apache and Nginx.
 - Deploy MariaDB or PostgreSQL.
 - Configure one file sharing service.
@@ -769,9 +1225,17 @@ sudo ausearch -m AVC -ts recent
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can deploy common service roles and verify them through service status, logs, ports, firewall, and SELinux.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain service-specific validation commands.
 - Explain why remote access may need app config, firewall, and SELinux changes.
@@ -779,15 +1243,31 @@ You can deploy common service roles and verify them through service status, logs
 
 ### Must Explain In Interview
 
-“I verify a service by checking the process, port, firewall, SELinux, local test, remote test, and logs.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"I verify a service by checking the process, port, firewall, SELinux, local test, remote test, and logs."
 
 ## Module 15: Security And Hardening
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Apply practical hardening without breaking manageability.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Updates.
 - Least privilege.
@@ -800,6 +1280,10 @@ You can deploy common service roles and verify them through service status, logs
 - File integrity.
 
 ### Must Know Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 sudo dnf update
@@ -814,6 +1298,10 @@ sudo firewall-cmd --list-all
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Review exposed services.
 - Enable auditd.
 - Check crypto policy.
@@ -821,9 +1309,17 @@ sudo firewall-cmd --list-all
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can apply basic hardening while preserving manageability.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain least privilege.
 - Explain why direct root SSH login is risky.
@@ -831,15 +1327,31 @@ You can apply basic hardening while preserving manageability.
 
 ### Must Explain In Interview
 
-“Hardening should be tested; I avoid breaking legacy clients without checking crypto policy, logs, and application requirements.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"Hardening should be tested; I avoid breaking legacy clients without checking crypto policy, logs, and application requirements."
 
 ## Module 16: Troubleshooting Mastery
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 ### Objectives
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Build a repeatable troubleshooting process for real incidents.
 
 ### Topics
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Service failures.
 - Boot issues.
@@ -852,6 +1364,10 @@ You can apply basic hardening while preserving manageability.
 - Package conflicts.
 
 ### Universal Triage Commands
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```bash
 hostnamectl
@@ -871,6 +1387,10 @@ dnf repolist
 
 ### Lab Tasks
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 - Break a service config and fix it.
 - Break an SELinux label and fix it.
 - Break `/etc/fstab` in a VM and recover.
@@ -878,9 +1398,17 @@ dnf repolist
 
 ### Expected Outcome
 
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
 You can diagnose common RHEL failures using a consistent evidence-first process.
 
 ### Revision Checkpoint
+
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - Explain your first five troubleshooting commands.
 - Explain how to distinguish firewall vs service vs SELinux.
@@ -888,4 +1416,8 @@ You can diagnose common RHEL failures using a consistent evidence-first process.
 
 ### Must Explain In Interview
 
-“I start broad with failed units and boot errors, then narrow into service logs, ports, firewall, SELinux, storage, and package state.”
+## How To Read This Guide
+
+Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
+
+"I start broad with failed units and boot errors, then narrow into service logs, ports, firewall, SELinux, storage, and package state."

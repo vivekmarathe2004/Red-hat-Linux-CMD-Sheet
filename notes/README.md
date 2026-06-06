@@ -1,28 +1,22 @@
 # Notes
 
-This directory is for practical RHEL admin notes and revision points. It is not the full syllabus and not the interview section.
+This section is the field guide for safe admin habits, revision patterns, and interview thinking.
 
-## Notes Dashboard
+## Read This When
 
-| Use Case | File |
-| --- | --- |
-| Admin mindset | [general-notes.md](general-notes.md) |
-| Safe change habits | [general-notes.md](general-notes.md) |
-| Interview answer pattern | [general-notes.md](general-notes.md) |
+- You want a mental model before memorizing commands.
+- You are preparing for interviews.
+- You keep making the same lab mistakes.
+- You need a safe production change checklist.
 
-## Where Is What
+## Main Notes
 
-| File | What It Contains |
-| --- | --- |
-| [general-notes.md](general-notes.md) | Admin safety notes, change patterns, service deployment notes, troubleshooting habits, storage/network/SELinux reminders |
+- [General notes](general-notes.md)
 
-## Related Sections
+## Related Practice
 
-| Section | Use It For |
-| --- | --- |
-| [Full study syllabus](../syllabus/rhel-linux-full-syllabus.md) | Structured module-wise learning |
-| [Hands-on labs](../labs/README.md) | VM-based practice |
-| [Troubleshooting scenarios](../scenarios/README.md) | Real-world diagnosis practice |
-| [Interview questions and answers](../interview/README.md) | Interview preparation |
-| [Command cheatsheets](../cheatsheets/command-index.md) | Fast command lookup |
-| [Core command sheets](../docs/README.md) | Detailed topic-wise command sheets |
+- [Full syllabus](../syllabus/rhel-linux-full-syllabus.md)
+- [Hands-on labs](../labs/README.md)
+- [Troubleshooting scenarios](../scenarios/README.md)
+- [Interview questions and answers](../interview/README.md)
+

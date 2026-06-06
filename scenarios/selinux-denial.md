@@ -1,5 +1,11 @@
 # Scenario: SELinux Denial
 
+## What This Usually Means
+
+This symptom tells you one layer of the system is not matching the expected state. Do not guess from the error message alone.
+
+Collect evidence from service state, logs, ports, firewall, SELinux, DNS, storage, and package state until the failing layer is clear.
+
 ## Symptoms
 
 - Permissions look correct but service still cannot access a file or port.
@@ -12,6 +18,10 @@
 - Missing SELinux boolean.
 - Non-standard port lacks correct SELinux port type.
 - Custom path not labeled for the service.
+
+## Decision Flow
+
+Start broad, then narrow down. If the service is not running, read service logs. If it is running but unreachable, check listen address and firewall. If permissions look correct but access fails, check SELinux. If names fail but IPs work, check DNS.
 
 ## Diagnostic Flow
 
@@ -58,7 +68,11 @@ systemctl restart <service>
 systemctl status <service>
 ```
 
+## What To Remember
+
+A good troubleshooting answer is not just a fix. It explains the evidence that led to the fix and the command used to verify recovery.
+
 ## Interview Answer
 
-“I do not disable SELinux as a fix. I use AVC logs to identify whether the problem is a label, boolean, port type, or policy issue.”
+"I do not disable SELinux as a fix. I use AVC logs to identify whether the problem is a label, boolean, port type, or policy issue."
 

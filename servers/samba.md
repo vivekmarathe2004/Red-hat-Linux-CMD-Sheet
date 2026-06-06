@@ -1,5 +1,11 @@
 # Samba
 
+## How This Service Fits
+
+A service is not just a package. A working deployment usually needs a valid config file, a running systemd unit, a listening port, firewall access for remote clients, and SELinux policy that matches the service behavior.
+
+Deploy in small steps: install, configure, validate, start, open access, test locally, test remotely, then review logs.
+
 ## Purpose
 
 Share files with SMB/CIFS clients such as Windows and Linux systems.
@@ -57,6 +63,13 @@ testparm
 systemctl status smb
 smbclient -L //localhost -U <user>
 ```
+
+## Common Service Mistakes
+
+- Opening a firewall port before confirming the service is listening.
+- Restarting a service before validating the config file.
+- Forgetting SELinux labels or booleans for custom paths and proxy behavior.
+- Testing only from localhost when the real users connect remotely.
 
 ## Troubleshooting
 

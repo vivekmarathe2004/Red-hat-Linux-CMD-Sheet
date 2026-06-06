@@ -1,5 +1,11 @@
 # Lab: Containers With Podman
 
+## Scenario Context
+
+Practice this lab on a disposable RHEL VM. Treat it like a small work ticket: understand the goal, make the change, verify it, and clean up after yourself.
+
+By the end, you should be able to explain what changed, where the configuration lives, and how you would troubleshoot the same task if it failed.
+
 ## Objective
 
 Run and troubleshoot a rootless Podman container.
@@ -50,6 +56,13 @@ podman images
 podman stop web-test
 podman rm web-test
 ```
+
+## Common Lab Mistakes
+
+- Copying placeholders such as `<user>`, `<device>`, or `<service>` without replacing them.
+- Forgetting to verify the result after each task.
+- Leaving test users, packages, services, or mounts behind after cleanup.
+- Practicing only the success path and never checking logs when something fails.
 
 ## Interview Takeaway
 

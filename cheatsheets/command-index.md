@@ -1,5 +1,9 @@
 # Command Index
 
+## How To Use This Sheet
+
+Use this as a quick lookup after you understand the related concept. Tables are kept here because speed matters, but production work still requires verification and careful placeholder replacement.
+
 ## Purpose
 
 Fast lookup for common RHEL administration commands.

@@ -1,5 +1,9 @@
 # RHEL 9 vs RHEL 10 Notes
 
+## How To Use This Sheet
+
+Use this as a quick lookup after you understand the related concept. Tables are kept here because speed matters, but production work still requires verification and careful placeholder replacement.
+
 ## Purpose
 
 Track practical differences to check before copying commands between RHEL 9 and RHEL 10 systems.
