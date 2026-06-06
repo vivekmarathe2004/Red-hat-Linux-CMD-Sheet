@@ -51,7 +51,10 @@
     <rect width="330" height="194" rx="22" fill="url(#red)"/>
     <path d="M70 78C94 44 142 34 188 48C220 58 244 78 270 82C252 112 217 128 176 120C139 113 111 91 70 78Z" fill="#FFFFFF"/>
     <path d="M52 112C92 126 132 138 180 138C226 138 270 128 300 106C284 150 239 174 174 174C112 174 72 152 52 112Z" fill="#151515"/>
-    <text x="42" y="50" font-family="Consolas, Menlo, monospace" font-size="18" font-weight="700" fill="#FFFFFF">admin-ready</text>
+  </g>
+
+  <g transform="translate(842 274)">
+    <rect width="250" height="40" rx="20" fill="#FFFFFF"/>
+    <text x="33" y="26" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="800" fill="#B80000">ADMIN READY</text>
   </g>
 </svg>
-
