@@ -4,9 +4,8 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-E00?style=for-the-badge"></a>
-  <img alt="RHEL" src="https://img.shields.io/badge/RHEL-9%20%7C%2010-151515?style=for-the-badge&logo=redhat&logoColor=white">
-  <img alt="Format" src="https://img.shields.io/badge/format-Markdown-2D2D2D?style=for-the-badge&logo=markdown&logoColor=white">
-  <img alt="Focus" src="https://img.shields.io/badge/focus-Job%20Prep%20%2B%20Admin-E00?style=for-the-badge">
+  <img alt="RHEL" src="https://img.shields.io/badge/RHEL-9%20%7C%2010-151515?style=for-the-badge">
+  <img alt="Focus" src="https://img.shields.io/badge/job--prep-labs%20%2B%20scenarios-E00?style=for-the-badge">
 </p>
 
 # Red Hat Linux Command Sheets
