@@ -1,18 +1,16 @@
 <p align="center">
-  <img src="assets/repo-banner.svg" alt="Red Hat Linux Command Sheets banner" width="100%">
-</p>
-
-<p align="center">
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-E00?style=for-the-badge"></a>
   <img alt="RHEL" src="https://img.shields.io/badge/RHEL-9%20%7C%2010-151515?style=for-the-badge">
   <img alt="Focus" src="https://img.shields.io/badge/job--prep-labs%20%2B%20scenarios-E00?style=for-the-badge">
 </p>
 
-# Red Hat Linux Command Sheets
+<h1 align="center">Red Hat Linux Command Sheets</h1>
 
-A polished RHEL 9 and RHEL 10 learning repository for command practice, server setup, troubleshooting, job preparation, and interview revision.
+<p align="center">
+  A structured RHEL 9/10 learning repository for command practice, server setup, troubleshooting, job preparation, and interview revision.
+</p>
 
-This root `README.md` is the front desk. Deep notes, labs, command sheets, scenarios, and interview answers live in their own sections.
+---
 
 ## Start Fast
 
@@ -37,7 +35,6 @@ This root `README.md` is the front desk. Deep notes, labs, command sheets, scena
 | [syllabus](syllabus/README.md) | Structured learning path | Full study plan |
 | [interview](interview/README.md) | Questions and answers | Technical interviews |
 | [notes](notes/README.md) | Admin habits and revision notes | Practical mental models |
-| [assets](assets/README.md) | README visuals | Repository presentation |
 
 ## Learning Path
 
