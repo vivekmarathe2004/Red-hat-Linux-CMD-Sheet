@@ -4,6 +4,12 @@
 
 This guide is written for spoken interview practice. Do not memorize only the command. Learn to explain what you check first, why you check it, and how you verify the fix.
 
+Related practice:
+
+- [Hands-on labs](../labs/README.md)
+- [Troubleshooting scenarios](../scenarios/README.md)
+- [Command index](../cheatsheets/command-index.md)
+
 ## Answer Format
 
 Use this pattern for scenario answers:
@@ -294,19 +300,102 @@ Also check SELinux if Nginx or Apache proxies to a network backend.
 
 ### Service works locally but not remotely
 
-Answer: "I check the listen address with `ss -tulpn`, then firewalld, routing, DNS, and external network controls."
+Practice with: [Service down](../scenarios/service-down.md), [Port blocked](../scenarios/port-blocked.md), [Web server lab](../labs/web-server.md)
+
+Answer: "I first prove the service works locally with `curl` or the service client. Then I check the listen address with `ss -tulpn`. If it listens only on `127.0.0.1`, remote clients cannot reach it. If it listens on the right address, I check firewalld with `firewall-cmd --list-all`, routing, DNS, and any external firewall or cloud rule. I verify from localhost and from a second host."
+
+Useful commands:
+
+```bash
+systemctl status <service>
+curl http://127.0.0.1:<port>
+sudo ss -tulpn | grep <port>
+sudo firewall-cmd --list-all
+ip route
+getent hosts <hostname>
+```
 
 ### Disk is full
 
-Answer: "I check `df -hT` and `df -ih`, identify large directories with `du`, clean safely, and extend storage if needed."
+Practice with: [Disk full](../scenarios/disk-full.md), [Storage and LVM lab](../labs/storage-and-lvm.md)
+
+Answer: "I check whether the filesystem is full or the inode table is full. `df -hT` shows space and filesystem type; `df -ih` shows inode usage. Then I identify growth with `du`, avoid deleting active logs blindly, clean package caches or old logs safely, and extend storage if the data is legitimate. I verify the filesystem has free space and the affected service recovered."
+
+Useful commands:
+
+```bash
+df -hT
+df -ih
+sudo du -xhd1 /var | sort -h
+journalctl --disk-usage
+sudo lvs
+```
 
 ### DNS fails but IP works
 
-Answer: "I verify routing first, then resolver settings, then direct DNS queries with `dig @<dns-server>`."
+Practice with: [DNS failure](../scenarios/dns-failure.md), [Networking basics lab](../labs/networking-basics.md)
+
+Answer: "If IP works but names fail, I separate routing from name resolution. I confirm the route, check NetworkManager DNS settings, test normal name resolution with `getent hosts`, and query a specific DNS server with `dig @<dns-server>`. If direct DNS works but normal lookup fails, I inspect resolver configuration and NetworkManager profile settings."
+
+Useful commands:
+
+```bash
+ip route
+nmcli device show <interface> | grep DNS
+getent hosts <hostname>
+dig <hostname>
+dig @<dns-server> <hostname>
+```
 
 ### Broken boot after storage change
 
-Answer: "I suspect `/etc/fstab`, compare it with `blkid` and `lsblk -f`, fix the bad entry, then test with `mount -a`."
+Practice with: [Broken fstab](../scenarios/broken-fstab.md), [Storage and LVM lab](../labs/storage-and-lvm.md)
+
+Answer: "After a storage change, I suspect `/etc/fstab`, missing devices, bad UUIDs, or unsupported mount options. From rescue or emergency mode, I compare `fstab` with `lsblk -f` and `blkid`, comment or fix the bad entry, then test with `mount -a` before rebooting. I verify the system reaches the normal target and the mount appears in `findmnt`."
+
+Useful commands:
+
+```bash
+lsblk -f
+sudo blkid
+sudo vi /etc/fstab
+sudo mount -a
+findmnt <mountpoint>
+systemctl --failed
+```
+
+### SELinux blocks a service
+
+Practice with: [SELinux denial](../scenarios/selinux-denial.md), [Firewall and SELinux lab](../labs/firewall-and-selinux.md)
+
+Answer: "I do not start by disabling SELinux permanently. I confirm the mode with `getenforce`, check labels with `ls -lZ`, then read recent AVC denials. The fix depends on the evidence: restore a default label, add a file context, set a boolean, or add an SELinux port type. I verify with the service test and confirm new AVC denials are not appearing."
+
+Useful commands:
+
+```bash
+getenforce
+ls -lZ <path>
+sudo ausearch -m AVC -ts recent
+sudo restorecon -Rv <path>
+getsebool -a | grep <service>
+```
+
+### Package install fails
+
+Practice with: [Package repo issue](../scenarios/package-repo-issue.md), [Packages and repositories lab](../labs/packages-and-repos.md)
+
+Answer: "I separate package name problems from repository and subscription problems. I check registration, enabled repositories, release lock, metadata cache, DNS/proxy access, and package availability. I avoid adding random third-party repositories until I understand why the expected Red Hat repository is not providing the package."
+
+Useful commands:
+
+```bash
+sudo subscription-manager status
+sudo subscription-manager repos --list-enabled
+sudo subscription-manager release --show
+dnf repolist --all
+sudo dnf makecache
+dnf info <package>
+```
 
 ## Final Interview Advice
 

@@ -14,6 +14,14 @@ For each lab:
 4. Clean up when the lab asks you to.
 5. Explain the interview takeaway out loud.
 
+## Lab Rules
+
+- Use a disposable RHEL 9 or RHEL 10 VM.
+- Take a snapshot before storage, firewall, SELinux, SSH, and repository labs.
+- Replace every placeholder before running a command.
+- Verify after each task instead of waiting until the end.
+- Write down one failure you caused and how you proved the fix.
+
 ## Lab Path
 
 ### Core Admin Skills
@@ -40,6 +48,12 @@ For each lab:
 ## What Good Practice Looks Like
 
 A lab is complete only when you can answer: what changed, where it is configured, how you verified it, and how you would troubleshoot it if it failed.
+
+## After Each Lab
+
+- Open the matching [core doc](../docs/README.md) and review the **Common Mistakes** section.
+- Try one related [troubleshooting scenario](../scenarios/README.md).
+- Practice one spoken answer from [interview prep](../interview/README.md).
 
 ## Page Navigation
 

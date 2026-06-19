@@ -10,10 +10,6 @@ General notes for using these RHEL 9 and RHEL 10 command sheets safely.
 
 ## Safety Notes
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 - Do not run disk, firewall, SELinux, user deletion, or repository removal commands blindly.
 - Replace placeholders such as `<device>`, `<interface>`, `<hostname>`, `<user>`, `<service>`, and `<mountpoint>` before running commands.
 - Test destructive commands in a VM or lab first.
@@ -22,56 +18,28 @@ Read this as a practical field guide, not a dictionary. Each section should help
 
 ## Safe Change Pattern
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 ```bash
 # 1. Confirm current state
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 systemctl status <service>
 sudo firewall-cmd --list-all
 getenforce
 
 # 2. Back up config
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 sudo cp -a <config-file> <config-file>.bak.$(date +%F-%H%M)
 
 # 3. Edit and validate
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 sudo vi <config-file>
 sudo <validation-command>
 
 # 4. Reload or restart
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 sudo systemctl reload <service> || sudo systemctl restart <service>
 
 # 5. Verify
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 systemctl status <service>
 journalctl -u <service> -b --no-pager
 ```
 
 ## RHEL Version Notes
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - RHEL 9 and RHEL 10 use different repository IDs. Always confirm with `subscription-manager repos --list`.
 - Package versions and application streams can differ between major releases.
@@ -79,10 +47,6 @@ Read this as a practical field guide, not a dictionary. Each section should help
 - Prefer `dnf`, `nmcli`, `systemctl`, `firewall-cmd`, and `podman` over older legacy workflows.
 
 ## Production Checklist
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 Before exposing a service:
 
@@ -117,10 +81,6 @@ sudo firewall-cmd --list-all
 
 ## Troubleshooting Habit
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 Use this order for most issues:
 
 1. Confirm the service exists and is running.
@@ -145,10 +105,6 @@ dnf repolist
 
 ## Admin Mindset
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 - First identify whether the issue is service, network, firewall, SELinux, permission, storage, package, or DNS related.
 - Prefer reading logs before changing configuration.
 - Make one change at a time and verify after each change.
@@ -158,10 +114,6 @@ Read this as a practical field guide, not a dictionary. Each section should help
 
 ## Student And Job-Prep Strategy
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 - Learn every topic in this order: concept, command, config file, verification, troubleshooting.
 - For each command, memorize what it proves, not only what it prints.
 - Practice saying answers aloud. Interviews reward clear diagnostic thinking.
@@ -170,10 +122,6 @@ Read this as a practical field guide, not a dictionary. Each section should help
 - Do not skip SELinux, firewalld, storage, and systemd logs. These topics appear constantly in practical interviews.
 
 ## Answer Pattern For Interviews
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 Use this structure when answering troubleshooting questions:
 
@@ -193,10 +141,6 @@ Then I check firewalld, SELinux, and application logs.
 
 ## Common Beginner Mistakes
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 | Mistake | Better Habit |
 | --- | --- |
 | Running commands without checking the target | Confirm host, device, service, and path first |
@@ -209,10 +153,6 @@ Read this as a practical field guide, not a dictionary. Each section should help
 | Using `kill -9` first | Try graceful stop or normal kill before force |
 
 ## What Every Job-Ready Beginner Should Know
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 | Area | You Should Be Able To Explain |
 | --- | --- |
@@ -228,10 +168,6 @@ Read this as a practical field guide, not a dictionary. Each section should help
 
 ## Common Command Patterns
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 | Goal | Pattern |
 | --- | --- |
 | Check service health | `systemctl status <service>` |
@@ -246,10 +182,6 @@ Read this as a practical field guide, not a dictionary. Each section should help
 | Check repo state | `dnf repolist --all` |
 
 ## Service Deployment Notes
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 Use this flow for most services:
 
@@ -289,10 +221,6 @@ sudo dnf install policycoreutils-python-utils setroubleshoot-server
 
 ## Repository And Package Notes
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 - Use Red Hat repositories through `subscription-manager` whenever possible.
 - Avoid mixing random third-party repositories on production systems.
 - Always check what a package removal will remove before confirming.
@@ -312,10 +240,6 @@ sudo dnf history info <id>
 ```
 
 ## Network Notes
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 - `ip addr` shows interface addresses.
 - `ip route` shows routing.
@@ -338,10 +262,6 @@ tracepath <remote-host>
 ```
 
 ## Firewall And SELinux Notes
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 Firewalld controls network access. SELinux controls what processes can do after access reaches the system.
 
@@ -367,10 +287,6 @@ sudo restorecon -Rv <path>
 Use `setenforce 0` only as a temporary test. If permissive mode fixes the issue, the real fix is usually a context, boolean, port type, or policy change.
 
 ## Storage Notes
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 Before touching disks:
 
@@ -406,10 +322,6 @@ findmnt <mountpoint>
 
 ## User And Permission Notes
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 - Unix permissions are checked across the whole path, not only the final file.
 - Group membership usually requires logout/login before it appears in a session.
 - ACLs are useful, but too many ACLs can make troubleshooting harder.
@@ -428,10 +340,6 @@ sudo -l -U <user>
 ```
 
 ## Boot And Rescue Notes
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 If a system fails after config changes:
 
@@ -452,10 +360,6 @@ Common boot blockers:
 
 ## Documentation Habit
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 For every server you configure, record:
 
 - RHEL version and kernel.
@@ -468,10 +372,6 @@ For every server you configure, record:
 - Verification commands and results.
 
 ## Daily Revision Drill
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 Run these in a lab VM and explain each output:
 
@@ -492,10 +392,6 @@ dnf repolist
 
 ## Before You Say "It Is A Network Issue"
 
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
-
 Check these separately:
 
 - Does the server have the right IP?
@@ -508,10 +404,6 @@ Check these separately:
 - Is an external firewall or cloud rule blocking it?
 
 ## Strong Interview Closing Line
-
-## How To Read This Guide
-
-Read this as a practical field guide, not a dictionary. Each section should help you answer what the concept means, when to use it, how to verify it, and how to explain it in an interview.
 
 ```text
 After fixing the issue, I verify the service from localhost and from a remote client, check logs again, and document what changed.

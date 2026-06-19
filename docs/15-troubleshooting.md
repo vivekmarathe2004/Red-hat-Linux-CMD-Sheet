@@ -63,6 +63,20 @@ sudo ss -tulpn | grep <port>
 sudo firewall-cmd --list-all
 ```
 
+## What To Check First
+
+Start with the smallest question that separates broad failure types:
+
+| Question | Command | Why It Helps |
+| --- | --- | --- |
+| Is the host healthy? | `systemctl --failed` | Shows failed units before you chase symptoms |
+| Is the issue current? | `journalctl -p err -b` | Limits evidence to this boot |
+| Is the service running? | `systemctl status <service>` | Separates service failure from access failure |
+| Is anything listening? | `sudo ss -tulpn` | Shows address, port, and owning process |
+| Is traffic allowed? | `sudo firewall-cmd --list-all` | Confirms host firewall state |
+| Is SELinux denying access? | `sudo ausearch -m AVC -ts recent` | Shows policy blocks instead of guessing |
+| Is storage blocking writes? | `df -hT`, `df -ih` | Separates space and inode exhaustion |
+
 ## Try It In A VM
 
 Run the workflow on a disposable RHEL VM. Change one setting, verify the result, then undo or document what changed. This builds the habit you need for production systems.
@@ -102,4 +116,4 @@ Use the same diagnostic flow on both versions. Interpret results using the packa
 
 ## Page Navigation
 
-[Previous](14-automation-shell-and-cron.md) | [Docs Index](README.md) | Next
+[Previous](14-automation-shell-and-cron.md) | [Docs Index](README.md)

@@ -20,19 +20,23 @@
 
 Choose the path that matches what you are doing right now.
 
-### Learn
+### New To RHEL
 
 Start with the [full syllabus](syllabus/README.md), then read the matching [core docs](docs/README.md). Each topic explains the idea first, then gives commands, verification, mistakes, and interview points.
 
-### Practice
+### Build Hands-On Skill
 
 Use the [hands-on labs](labs/README.md) in a disposable VM. The labs are written for repetition: do the task, verify it, clean it up, then explain what happened.
 
-### Troubleshoot
+### Practice Troubleshooting
 
 Use [scenarios](scenarios/README.md) when you want real-world diagnostic thinking: symptoms, likely causes, decision flow, fixes, and spoken interview answers.
 
-### Reference
+### Prepare For Interviews
+
+Use [interview prep](interview/README.md) after each topic. Practice answers out loud using this order: current state, evidence, likely cause, fix, verification.
+
+### Look Up Commands
 
 Use [cheatsheets](cheatsheets/README.md) when you already understand the concept and only need a command, path, port, or config file quickly.
 
@@ -69,6 +73,28 @@ Use this loop for every topic:
 4. Break one thing intentionally.
 5. Troubleshoot it from logs and evidence.
 6. Explain the fix out loud.
+
+## Quick Diagnostic Flow
+
+For most RHEL issues, avoid guessing. Move through evidence in this order:
+
+```text
+service state -> logs -> listen address/port -> firewall -> SELinux -> permissions -> storage/DNS/packages
+```
+
+Useful first commands:
+
+```bash
+systemctl --failed
+journalctl -p err -b --no-pager
+systemctl status <service>
+journalctl -u <service> -b --no-pager
+sudo ss -tulpn
+sudo firewall-cmd --list-all
+getenforce
+sudo ausearch -m AVC -ts recent
+df -hT
+```
 
 ## Safety
 

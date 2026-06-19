@@ -14,6 +14,18 @@ Before exposing any service, answer:
 - Is SELinux allowing the service behavior?
 - Do logs show a clean startup?
 
+## Standard Service Flow
+
+Use the same rhythm for every recipe:
+
+1. Install the package.
+2. Enable and start the service.
+3. Validate config syntax if the service provides a checker.
+4. Confirm the process is listening.
+5. Open the firewall only for the required service or port.
+6. Check SELinux labels, booleans, or port types if access fails.
+7. Verify locally and from a second host.
+
 ## Recipes
 
 ### Web
@@ -49,11 +61,21 @@ Before exposing any service, answer:
 
 ```bash
 systemctl status <service>
+journalctl -u <service> -b --no-pager
 sudo ss -tulpn
 sudo firewall-cmd --list-all
 getenforce
 sudo ausearch -m AVC -ts recent
 ```
+
+## Common Failure Split
+
+| Symptom | First Check | Next Check |
+| --- | --- | --- |
+| Service will not start | `systemctl status <service>` | `journalctl -u <service> -b` |
+| Works locally, not remotely | `sudo ss -tulpn` | firewalld, route, external firewall |
+| Permission denied | `namei -l <path>` | `ls -lZ <path>`, AVC denials |
+| Config change ignored | service config test | reload vs restart, included config path |
 
 ## Page Navigation
 

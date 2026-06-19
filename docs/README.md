@@ -12,6 +12,13 @@ Start at the top if you are learning. Jump directly to a topic if you are troubl
 - Which files and commands prove the current state?
 - How do I verify that my change worked?
 
+## Best Use
+
+- Read one page before the matching lab.
+- Copy commands only after you understand what they prove.
+- Use the **Verify**, **Troubleshooting**, and **Common Mistakes** sections as your production checklist.
+- After reading, explain the topic without looking at the command block.
+
 ## Learning Path
 
 ### Foundation
@@ -44,6 +51,7 @@ Start at the top if you are learning. Jump directly to a topic if you are troubl
 - Run the related [hands-on labs](../labs/README.md).
 - Test yourself with [troubleshooting scenarios](../scenarios/README.md).
 - Use [cheatsheets](../cheatsheets/README.md) only after the concept is clear.
+- Finish with [interview practice](../interview/README.md) for the same topic.
 
 ## Page Navigation
 

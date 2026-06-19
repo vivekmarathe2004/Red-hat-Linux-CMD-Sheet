@@ -15,6 +15,17 @@ Do not jump straight to the fix. Use this order:
 5. Verify locally and remotely.
 6. Explain the root cause.
 
+## What To Write Down
+
+For each scenario, keep a short incident note:
+
+- Symptom reported.
+- Commands that proved the current state.
+- Root cause.
+- Exact fix.
+- Verification from the server and from a client.
+- Prevention step.
+
 ## Scenario List
 
 ### Service And Access
@@ -48,6 +59,10 @@ getenforce
 sudo ausearch -m AVC -ts recent
 df -hT
 ```
+
+## Practice Loop
+
+After solving a scenario, run the matching [lab](../labs/README.md), then practice the spoken version in [interview prep](../interview/README.md).
 
 ## Page Navigation
 
